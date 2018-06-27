@@ -1,1 +1,5 @@
+/.idea
+*.iml
+/target
+/out
 src/main/resources/credentials.properties
