@@ -59,18 +59,21 @@ public class Scraper {
                 // Parse submission title into data we care about and store it in a new Deal object
                 String delims = "[\\[\\]()]+";
                 String[] tokens = title.split(delims);
-
                 String dealPlatform = tokens[1];
                 String dealTitle = tokens[2].trim();
 
                 Deal deal = new Deal(dealTitle, s.getUrl());
                 deal.setPlatform(dealPlatform);
-
-                // TODO: Populate other Deal fields where data is available
-
-
-                // TODO: Try to determine whether match is a game or just a free DLC
-
+                deal.setSource("Reddit user " + s.getAuthor());
+                deal.setSourceURL("https://www.reddit.com" + s.getPermalink());
+                deal.setPostDate(s.getCreated());
+                if (title.contains("DLC")) {
+                    deal.setType(DealTypes.DLC);
+                }
+                else {
+                    deal.setType(DealTypes.FULL_GAME);
+                }
+                // TODO: Try to determine expiration date based on submission time + information in title, e.g. "Free for 48 hrs"
 
                 System.out.println(deal.toString());
             }

@@ -1,15 +1,15 @@
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Deal {
     // Mandatory fields
     private String Title;
     private String StoreURL;
     // Optional fields
-    private String Platform;
+    private String Platform; // Relies on user-submitted data. May indicate either hardware platform or DRM platform.
     private String Source;
     private String SourceURL;
-    private LocalDateTime PostDate;
-    private LocalDateTime ExpirationDate;
+    private Date PostDate;
+    private Date ExpirationDate;
     private DealTypes Type;
 
     public Deal(String title, String storeURL) {
@@ -22,7 +22,13 @@ public class Deal {
         // Returns a two-line string.
         // First line will contain platform, title, and time until expiration (if known).
         // Second line will contain the store URL.
-        String dealString = "[" + Platform + "] " + Title;
+        String dealString = "";
+
+        if (Platform != null) {
+            dealString += "[" + Platform + "] ";
+        }
+
+        dealString += Title;
 
         // TODO: Implement expiration date here using appropriate date/time object type
 //        if (ExpirationDate != null) {
@@ -67,19 +73,19 @@ public class Deal {
         SourceURL = sourceURL;
     }
 
-    public LocalDateTime getPostDate() {
+    public Date getPostDate() {
         return PostDate;
     }
 
-    public void setPostDate(LocalDateTime postDate) {
+    public void setPostDate(Date postDate) {
         PostDate = postDate;
     }
 
-    public LocalDateTime getExpirationDate() {
+    public Date getExpirationDate() {
         return ExpirationDate;
     }
 
-    public void setExpirationDate(LocalDateTime expirationDate) {
+    public void setExpirationDate(Date expirationDate) {
         ExpirationDate = expirationDate;
     }
 
