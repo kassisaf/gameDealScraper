@@ -11,7 +11,6 @@ import net.dean.jraw.oauth.OAuthHelper;
 import net.dean.jraw.pagination.DefaultPaginator;
 
 import java.util.ResourceBundle;
-import java.util.regex.Pattern;
 
 public class Scraper {
 
@@ -51,17 +50,29 @@ public class Scraper {
             viewCount++;
 
             String title = s.getTitle();
-            // This regex pattern looks for "free", but tries to avoid hitting games with "free" in the title
-            // e.g. "Freedom", or posts containing a "free gift for redditors" when not actually free.
+            // This regex pattern looks for "free", but tries to avoid hitting games with "free" in the title,
+            // e.g. "Freedom Fighters", or non-free games containing a "free gift".
             String pattern = ".*(?i)[\\W](free)(?!( gift))[\\W].*";
             if (title.toLowerCase().matches(pattern)){
-
-//            if (title.toLowerCase().contains("(free")){
                 freeCount++;
-                //TODO: construct a json object containing platform, title, post url, store url, submitter, and expiration date if found
+
+                // Parse submission title into data we care about and store it in a new Deal object
+                String delims = "[\\[\\]()]+";
+                String[] tokens = title.split(delims);
+
+                String dealPlatform = tokens[1];
+                String dealTitle = tokens[2].trim();
+
+                Deal deal = new Deal(dealTitle, s.getUrl());
+                deal.setPlatform(dealPlatform);
+
+                // TODO: Populate other Deal fields where data is available
 
 
-                System.out.println(title);
+                // TODO: Try to determine whether match is a game or just a free DLC
+
+
+                System.out.println(deal.toString());
             }
         }
         System.out.println("---");
