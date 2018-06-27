@@ -69,7 +69,7 @@ public class Scraper {
                 // Create a new deal object and populate it with relevant data
                 Deal deal = new Deal(dealTitle, s.getUrl());
                 deal.setPlatform(dealPlatform);
-                deal.setSource("Reddit user " + s.getAuthor());
+                deal.setSource("/u/" + s.getAuthor() + "via /r/" + targetSub);
                 deal.setSourceURL("https://www.reddit.com" + s.getPermalink());
                 deal.setPostDate(s.getCreated());
                 // Try to determine whether title is a full game or just a DLC
