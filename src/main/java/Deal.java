@@ -1,32 +1,41 @@
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Date;
 
 public class Deal {
     // Mandatory fields
     private String Title;
-    private String StoreURL;
+    private URL StoreURL;
     // Optional fields
     private String Platform; // Relies on user-submitted data. May indicate either hardware platform or DRM platform.
     private String Source;
-    private String SourceURL;
+    private URL SourceURL;
     private Date PostDate;
     private Date ExpirationDate;
     private DealTypes Type;
 
     public Deal(String title, String storeURL) {
         Title = title;
-        StoreURL = storeURL;
+        try {
+            StoreURL = new URL(storeURL);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        // TODO: Try to populate fields not explicitly passed in (e.g. guess DRM platform by URL, or use IGDB API lookups)
+        // https://www.igdb.com/api
     }
 
     @Override
     public String toString() {
         // Returns a two-line string.
-        // First line will contain platform, title, and time until expiration (if known).
+        // First line will contain [platform], title, [time until expiration]
         // Second line will contain the store URL.
         String dealString = "";
 
-        if (Platform != null) {
-            dealString += "[" + Platform + "] ";
-        }
+//        if (Platform != null) {
+//            dealString += "[" + Platform + "] ";
+//        }
 
         dealString += Title;
 
@@ -50,11 +59,15 @@ public class Deal {
     }
 
     public String getStoreURL() {
-        return StoreURL;
+        return StoreURL.toString();
     }
 
     public void setStoreURL(String storeURL) {
-        StoreURL = storeURL;
+        try {
+            StoreURL = new URL(storeURL);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
     public String getSource() {
@@ -66,11 +79,15 @@ public class Deal {
     }
 
     public String getSourceURL() {
-        return SourceURL;
+        return SourceURL.toString();
     }
 
     public void setSourceURL(String sourceURL) {
-        SourceURL = sourceURL;
+        try {
+            SourceURL = new URL(sourceURL);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
     public Date getPostDate() {
