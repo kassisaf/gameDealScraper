@@ -1,3 +1,7 @@
+
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.Unirest;
+import com.mashape.unirest.http.exceptions.UnirestException;
 import net.dean.jraw.RedditClient;
 import net.dean.jraw.http.NetworkAdapter;
 import net.dean.jraw.http.OkHttpNetworkAdapter;
@@ -22,12 +26,17 @@ public class Scraper {
     );
     private static ResourceBundle credentialsBundle = ResourceBundle.getBundle("credentials");
 
-    public static void main(String[] args){
-        ScrapeSubreddit("GameDeals");
-//        ScrapeSubreddit("AndroidGameDeals");
+    public static void main(String[] args) {
+        try {
+            ScrapeHumbleStore();
+        } catch (UnirestException e) {
+            e.printStackTrace();
+        }
+        //ScrapeSubreddit("GameDeals");
+        //ScrapeSubreddit("AndroidGameDeals");
     }
 
-    public static void ScrapeSubreddit(String targetSub){
+    private static void ScrapeSubreddit(String targetSub){
         // Set up our reddit connection and auth
         Credentials credentialsReddit = Credentials.script(
                 credentialsBundle.getString("reddit_username"),
@@ -69,7 +78,7 @@ public class Scraper {
                 // Create a new deal object and populate it with relevant data
                 Deal deal = new Deal(dealTitle, s.getUrl());
                 deal.setPlatform(dealPlatform);
-                deal.setSource("/u/" + s.getAuthor() + "via /r/" + targetSub);
+                deal.setSource("Reddit (/u/" + s.getAuthor() + " via /r/" + targetSub + ")");
                 deal.setSourceURL("https://www.reddit.com" + s.getPermalink());
                 deal.setPostDate(s.getCreated());
                 // Try to determine whether title is a full game or just a DLC
@@ -82,8 +91,11 @@ public class Scraper {
                 // TODO: Try to determine expiration date based on submission time + information in title, e.g. "Free for 48 hrs"
                 String reFreeForDuration = ".*(?i)(free)[\\W]((for)[\\W][\\d*].*((hr)|(hour)|(day)|(week))).*";
                 String reFreeUntilDate = ".*(?i)(free)[\\W](until)[\\W].*[\\d*].*";
-                if (title.matches("")) {
-
+                if (title.matches(reFreeUntilDate)) {
+                    // TODO: Parse date following "free until" and set expiration
+                }
+                else if (title.matches(reFreeForDuration)) {
+                    // TODO: Parse duration following "free for" and set expiration
                 }
 
                 System.out.println(deal.toString());
@@ -92,6 +104,26 @@ public class Scraper {
         System.out.println("---");
         System.out.print("/r/" + targetSub + ": " +
                 "Found " + freeCount + " free titles out of " + viewCount + " submissions viewed.");
+    }
+
+    private static void ScrapeSteam(){
+        // TODO: Implement scraping for Steam sales
+        //String humanURL = "https://store.steampowered.com/search/?specials=1";
+    }
+
+    private static void ScrapeHumbleStore() throws UnirestException {
+        // TODO: Implement scraping for Humble Store
+        String humanURL = "https://www.humblebundle.com/store/search?sort=discount&filter=onsale";
+        String requestURL = "https://www.humblebundle.com/store/api/search?sort=discount&filter=onsale&request=1&page_size=20";
+
+        HttpResponse<String> response = Unirest.get(requestURL)
+                .header("Cache-Control", "no-cache")
+                .header("Postman-Token", "746fad60-b000-40b2-9a7e-0c5d50b67795")
+                .asString();
+
+        // TODO: Serialize response to JSON object and extract the data we care about
+
+        System.out.print("BREAKPOINT: ScrapeHumbleStore() finished"); // TODO: Remove this
     }
 
 }
