@@ -1,33 +1,22 @@
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.math.BigDecimal;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Deal {
-    @JsonProperty("human_name")
-    private String       title;
-    @JsonProperty("human_url")
-    private URL          url;
-    private Date         datePosted;
-    @JsonProperty("sale_end")
-    private Date         dateExpires;
-    @JsonProperty("platforms")
-    private String[]     platformOs;
-    @JsonProperty("delivery_methods")
-    private String[]     platformDrm;
-    @JsonProperty("full_price")
-    private BigDecimal   priceNormal;
-    @JsonProperty("current_price")
-    private BigDecimal   priceCurrent;
-    private String       sourceName;
-    private URL          sourceUrl;
-    private ContentType  contentType;
-    @JsonProperty("featured_image_small")
-    private URL          imageUrl;
+    private String        title;
+    private URL           url;
+    private LocalDate     datePosted;
+    private LocalDate     dateExpires;
+    private List<String>  platformOs;
+    private List<String>  platformDrm;
+    private BigDecimal    priceNormal;
+    private BigDecimal    priceCurrent;
+    private String        sourceName;
+    private URL           sourceUrl;
+    private ContentType   contentType;
+    private URL           imageUrl;
 
     // Constructors
     public Deal() {
@@ -55,28 +44,20 @@ public class Deal {
         return (prefix + title + secondLine);
     }
 
-    public Boolean IsFree() {
+    public Boolean isFree() {
         // TODO: Exception for missing data
         return priceCurrent.intValue() == 0;
     }
 
-    public Boolean IsExpired() {
+    public Boolean isExpired() {
         // TODO: Exception for missing data
-        return dateExpires.before(new Date());
+        return dateExpires.isBefore(LocalDate.now());
     }
 
 
 
     // Private Methods
-    private static URL StringToURL(String stringUrl) {
-        try {
-            URL url = new URL(stringUrl);
-            return url;
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+
 
 
 
@@ -95,43 +76,46 @@ public class Deal {
         this.url = url;
     }
     public void setUrl(String url) {
-        this.url = StringToURL(url);
+        this.url = Convert.stringToURL(url);
     }
 
-    public Date getDatePosted() {
+    public LocalDate getDatePosted() {
         return datePosted;
     }
-    public void setDatePosted(Date datePosted) {
+    public void setDatePosted(LocalDate datePosted) {
         this.datePosted = datePosted;
     }
     // TODO: Add setters for Date variables that accept and parse a String representation (epoch/NLP)
 
-    public Date getDateExpires() {
+    public LocalDate getDateExpires() {
         return dateExpires;
     }
-    public void setDateExpires(Date dateExpires) {
+    public void setDateExpires(LocalDate dateExpires) {
         this.dateExpires = dateExpires;
     }
 
-    public String[] getPlatformOs() {
+    public List<String> getPlatformOs() {
         return platformOs;
     }
-    public void setPlatformOs(String[] platformOs) {
+    public void setPlatformOs(List<String> platformOs) {
         this.platformOs = platformOs;
     }
     public void setPlatformOs(String platformOs) {
-        this.platformOs = new String[]{platformOs};
+        List<String> l = new ArrayList<>();
+        l.add(platformOs);
+        this.platformOs = l;
     }
 
-
-    public String[] getPlatformDrm() {
+    public List<String> getPlatformDrm() {
         return platformDrm;
     }
-    public void setPlatformDrm(String[] platformDrm) {
+    public void setPlatformDrm(List<String> platformDrm) {
         this.platformDrm = platformDrm;
     }
     public void setPlatformDrm(String platformDrm) {
-        this.platformDrm = new String[]{platformDrm};
+        List<String> l = new ArrayList<>();
+        l.add(platformDrm);
+        this.platformDrm = l;
     }
 
     public BigDecimal getPriceNormal() {
@@ -140,7 +124,6 @@ public class Deal {
     public void setPriceNormal(BigDecimal priceNormal) {
         this.priceNormal = priceNormal;
     }
-
 
     public BigDecimal getPriceCurrent() {
         return priceCurrent;
@@ -171,7 +154,7 @@ public class Deal {
         this.sourceUrl = sourceUrl;
     }
     public void setSourceUrl(String sourceUrl) {
-        this.sourceUrl = StringToURL(sourceUrl);
+        this.sourceUrl = Convert.stringToURL(sourceUrl);
     }
 
     public ContentType getContentType() {
@@ -188,6 +171,6 @@ public class Deal {
         this.imageUrl = imageUrl;
     }
     public void setImageUrl(String imageUrl) {
-        this.imageUrl = StringToURL(imageUrl);
+        this.imageUrl = Convert.stringToURL(imageUrl);
     }
 }
