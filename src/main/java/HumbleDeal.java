@@ -1,27 +1,17 @@
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class HumbleDeal{
-    @JsonProperty       ("human_name")
-    public String        title;
-    @JsonProperty       ("human_url")
-    public String        url;
-    @JsonProperty       ("sale_end")
-    public String        dateExpires;
-    @JsonProperty       ("platforms")
-    public List<String>  platformOs;
-    @JsonProperty       ("delivery_methods")
-    public List<String>  platformDrm;
-    @JsonProperty       ("full_price")
-    public List<String>  priceNormal;
-    @JsonProperty       ("current_price")
-    public List<String>  priceCurrent;
-    @JsonProperty       ("featured_image_small")
-    public String        imageUrl;
+    public String        human_name;           // Title
+    public String        human_url;            // URL (partial)
+    public String        sale_end;             // Expiry date in seconds from epoch
+    public List<String>  platforms;            // Platforms (OS)
+    public List<String>  delivery_methods;     // Platforms (DRM)
+    public List<String>  full_price;           // Normal price
+    public List<String>  current_price;        // Sale price
+    public String        featured_image_small; // Image URL (full)
 
     public HumbleDeal() {
         super();
