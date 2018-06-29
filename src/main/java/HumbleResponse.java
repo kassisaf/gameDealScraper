@@ -7,4 +7,8 @@ import java.util.List;
 public class HumbleResponse {
     @JsonProperty("results")
     private List<HumbleDeal> results;
+
+    public HumbleDeal get(int index){
+        return this.results.get(index);
+    }
 }
