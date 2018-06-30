@@ -11,4 +11,15 @@ public class HumbleResponse {
     public HumbleDeal get(int index){
         return this.results.get(index);
     }
+
+    public HumbleDeal get(String title) {
+        title = title.toLowerCase().trim();
+        for (HumbleDeal d : results) {
+            String currentTitle = d.human_name.toLowerCase().trim();
+            if (currentTitle.equals(title)) {
+                return d;
+            }
+        }
+        return null;
+    }
 }
