@@ -48,8 +48,8 @@ public class RedditScraper {
 
         Listing<Submission> submissions = dealSubs.next();
 
-        Integer viewCount = 0;
-        Integer freeCount = 0;
+        int viewCount = 0;
+        int freeCount = 0;
         for (Submission s : submissions) {
             viewCount++;
 
