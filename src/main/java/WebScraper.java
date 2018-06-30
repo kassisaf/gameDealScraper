@@ -40,12 +40,8 @@ public class WebScraper {
         });
     }
 
-    private static void ScrapeHumbleStore() throws UnirestException, IOException {
-        // TODO: Implement scraping for Humble Store
-        String humanURL = "https://www.humblebundle.com/store/search?sort=discount&filter=onsale";
-        String requestURL = "https://www.humblebundle.com/store/api/search?sort=discount&filter=onsale&request=1&page_size=20";
-
-        HttpResponse<HumbleResponse> response = Unirest.get(requestURL).asObject(HumbleResponse.class);
+    private static void ScrapeHumbleStore() throws UnirestException {
+        HttpResponse<HumbleResponse> response = Unirest.get(HumbleDeal.getRequestUrl()).asObject(HumbleResponse.class);
         HumbleResponse deals = response.getBody();
 
         System.out.print("BREAKPOINT: ScrapeHumbleStore() finished"); // TODO: Remove this
