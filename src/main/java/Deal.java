@@ -35,6 +35,7 @@ public class Deal {
     // Public Methods
     @Override
     public String toString() {
+        // TODO: Expand output. StringBuilder or StringBuffer may be preferable here.
         String prefix = "";
         if (platformDrm != null) {
             prefix = "[" + String.join(", ", platformDrm) + "] ";
@@ -130,14 +131,6 @@ public class Deal {
     }
     public void setPriceCurrent(BigDecimal priceCurrent) {
         this.priceCurrent = priceCurrent;
-    }
-    public void setPriceCurrent(String priceCurrent) {
-        if (priceCurrent.toLowerCase().trim().equals("free")) {
-            this.priceCurrent = new BigDecimal(0);
-        }
-        else {
-            throw new RuntimeException("Invalid price: " + priceCurrent);
-        }
     }
 
     public String getSourceName() {
