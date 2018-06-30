@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 
-public class Convert {
+public abstract class Convert {
 
     public static URL stringToURL(String stringUrl) {
         try {
