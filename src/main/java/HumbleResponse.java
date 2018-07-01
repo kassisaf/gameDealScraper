@@ -16,7 +16,7 @@ public class HumbleResponse {
         title = title.toLowerCase().trim();
         for (HumbleDeal d : results) {
             String currentTitle = d.human_name.toLowerCase().trim();
-            if (currentTitle.equals(title)) {
+            if (title.equals(currentTitle)) {
                 return d;
             }
         }
