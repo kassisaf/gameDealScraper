@@ -21,7 +21,7 @@ public class HumbleDeal{
     public HumbleDeal() {
     }
 
-    private Deal toDeal(){
+    public Deal toDeal(){
         Deal d = new Deal();
         d.setSourceName("Humble Store");
         d.setSourceUrl(sourceUrl);
@@ -32,8 +32,8 @@ public class HumbleDeal{
         d.setPlatformOs(platforms);
         d.setPlatformDrm(delivery_methods);
         // TODO: Use a money lib to preserve currency code (Humble Store returns currency code for full_price and current_price at index 1)
-        d.setPriceNormal(new BigDecimal(full_price.get(0)));
-        d.setPriceCurrent(new BigDecimal(current_price.get(0)));
+        d.setNormalPrice(new BigDecimal(full_price.get(0)));
+        d.setCurrentPrice(new BigDecimal(current_price.get(0)));
         d.setImageUrl(featured_image_small);
 
         return d;
