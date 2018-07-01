@@ -57,17 +57,25 @@ public class RedditScraper {
             // This regex pattern looks for "free", but tries to avoid hitting games with "free" in the title,
             // e.g. "Freedom Fighters", or non-free games containing a "free gift".
             String reFreeGame = ".*(?i)[\\W](free)(?!( gift))[\\W].*";
-            if (title.toLowerCase().matches(reFreeGame)){
+            if (title.matches(reFreeGame)){
                 freeCount++;
 
                 // Parse submission title into data we care about
-                String reTitleDelimiters = "[\\[\\]()]+";
-                String[] tokens = title.split(reTitleDelimiters);
-                // TODO: Add exception handling for submissions that don't split cleanly into 3+ elements
                 // Note: This split relies on user submissions following rule #3 title formatting:
                 // https://www.reddit.com/r/GameDeals/wiki/rules#wiki_3._title_format
-                String storeName = tokens[1];
-                String dealInfo = tokens[2].trim();
+                String reTitleDelimiters = "[\\[\\]()]+";
+                String[] tokens = title.split(reTitleDelimiters);
+                // TODO: Add logic for handling submissions that don't split cleanly into 3+ elements
+                // TODO: Catch out of bounds exception
+                String storeName = "";
+                String dealInfo = "";
+                if (tokens.length == 3) {
+                    storeName = tokens[1].trim();
+                    dealInfo = tokens[2].trim();
+                }
+                else {
+                    dealInfo = title;
+                }
 
                 // Create a new deal object and populate it with relevant data
                 Deal deal = new Deal(dealInfo, s.getUrl());

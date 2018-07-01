@@ -5,18 +5,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Deal {
-    private String        title;
-    private URL           url;
-    private LocalDate     datePosted;
-    private LocalDate     dateExpires;
-    private List<String>  platformOs;
-    private List<String>  platformDrm;
-    private BigDecimal    priceNormal;
-    private BigDecimal    priceCurrent;
-    private String        sourceName;
-    private URL           sourceUrl;
-    private ContentType   contentType;
-    private URL           imageUrl;
+    private String       title;
+    private URL          url;
+    private LocalDate    datePosted;
+    private LocalDate    dateExpires;
+    private List<String> platformOs;
+    private List<String> platformDrm;
+    private BigDecimal   normalPrice;
+    private BigDecimal   currentPrice;
+    private String       sourceName;
+    private URL          sourceUrl;
+    private ContentType  contentType;
+    private URL          imageUrl;
 
     // Constructors
     public Deal() {
@@ -29,6 +29,9 @@ public class Deal {
         this.setTitle(title);
         this.setUrl(url);
     }
+    public Deal(HumbleDeal humbleDeal) {
+//        this = humbleDeal.toDeal(); // TODO: Move HumbleResponse.toDeal() logic here and call it from HumbleResponse
+    }
 
 
 
@@ -36,8 +39,9 @@ public class Deal {
     @Override
     public String toString() {
         // TODO: Expand output. StringBuilder or StringBuffer may be preferable here.
+        // TODO: Rewrite using StringBuilder or StringBuffer. This is ugly and bad.
         String prefix = "";
-        if (platformDrm != null) {
+        if (platformDrm.size() > 1) {
             prefix = "[" + String.join(", ", platformDrm) + "] ";
         }
         String secondLine = "\n" + url.toString();
@@ -47,7 +51,7 @@ public class Deal {
 
     public Boolean isFree() {
         // TODO: Exception for missing data
-        return priceCurrent.intValue() == 0;
+        return currentPrice.intValue() == 0;
     }
 
     public Boolean isExpired() {
@@ -119,18 +123,18 @@ public class Deal {
         this.platformDrm = l;
     }
 
-    public BigDecimal getPriceNormal() {
-        return priceNormal;
+    public BigDecimal getNormalPrice() {
+        return normalPrice;
     }
-    public void setPriceNormal(BigDecimal priceNormal) {
-        this.priceNormal = priceNormal;
+    public void setNormalPrice(BigDecimal normalPrice) {
+        this.normalPrice = normalPrice;
     }
 
-    public BigDecimal getPriceCurrent() {
-        return priceCurrent;
+    public BigDecimal getCurrentPrice() {
+        return currentPrice;
     }
-    public void setPriceCurrent(BigDecimal priceCurrent) {
-        this.priceCurrent = priceCurrent;
+    public void setCurrentPrice(BigDecimal currentPrice) {
+        this.currentPrice = currentPrice;
     }
 
     public String getSourceName() {
