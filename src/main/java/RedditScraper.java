@@ -10,6 +10,9 @@ import net.dean.jraw.oauth.Credentials;
 import net.dean.jraw.oauth.OAuthHelper;
 import net.dean.jraw.pagination.DefaultPaginator;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class RedditScraper {
@@ -56,6 +59,8 @@ public class RedditScraper {
             String title = s.getTitle();
             // This regex pattern looks for "free", but tries to avoid hitting games with "free" in the title,
             // e.g. "Freedom Fighters", or non-free games containing a "free gift".
+            // TODO: Filter out "Buy 2 Get 1 Free"
+            // TODO: Filter out "free weekend"
             String reFreeGame = ".*(?i)[\\W](free)(?!( gift))[\\W].*";
             if (title.matches(reFreeGame)){
                 freeCount++;
@@ -64,14 +69,17 @@ public class RedditScraper {
                 // Note: This split relies on user submissions following rule #3 title formatting:
                 // https://www.reddit.com/r/GameDeals/wiki/rules#wiki_3._title_format
                 String reTitleDelimiters = "[\\[\\]()]+";
-                String[] tokens = title.split(reTitleDelimiters);
-                // TODO: Add logic for handling submissions that don't split cleanly into 3+ elements
-                // TODO: Catch out of bounds exception
+                List<String> parsedTitle = new ArrayList<>(Arrays.asList(title.split(reTitleDelimiters)));
+                parsedTitle.removeAll(Arrays.asList("", null));
+
+                // Handle submissions that don't split cleanly into 3+ elements
+                // TODO: Clean this up, catch out of bounds exception
                 String storeName = "";
-                String dealInfo = "";
-                if (tokens.length == 3) {
-                    storeName = tokens[1].trim();
-                    dealInfo = tokens[2].trim();
+                String dealInfo;
+                int tokens = parsedTitle.size();
+                if (tokens >= 3) {
+                    storeName = parsedTitle.get(0).trim();
+                    dealInfo = parsedTitle.get(1).trim();
                 }
                 else {
                     dealInfo = title;
@@ -79,7 +87,7 @@ public class RedditScraper {
 
                 // Create a new deal object and populate it with relevant data
                 Deal deal = new Deal(dealInfo, s.getUrl());
-                deal.setPlatformDrm(storeName);
+                deal.setStore(storeName);
                 deal.setSourceName("Reddit (/u/" + s.getAuthor() + " via /r/" + targetSub + ")");
                 deal.setSourceUrl("https://www.reddit.com" + s.getPermalink());
                 deal.setDatePosted(Convert.dateToLocalDate(s.getCreated()));

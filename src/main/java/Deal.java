@@ -1,3 +1,7 @@
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.math.BigDecimal;
 import java.net.URL;
 import java.time.LocalDate;
@@ -7,10 +11,10 @@ import java.util.List;
 public class Deal {
     private String       title;
     private URL          url;
+    private String       store;
+    private List<String> platforms;
     private LocalDate    datePosted;
     private LocalDate    dateExpires;
-    private List<String> platformOs;
-    private List<String> platformDrm;
     private BigDecimal   normalPrice;
     private BigDecimal   currentPrice;
     private String       sourceName;
@@ -39,28 +43,30 @@ public class Deal {
         // TODO: Expand output. StringBuilder or StringBuffer may be preferable here.
         // TODO: Rewrite using StringBuilder or StringBuffer. This is ugly and bad.
         String prefix = "";
-        if (platformDrm.size() > 1) {
-            prefix = "[" + String.join(", ", platformDrm) + "] ";
+        if (store != "") {
+            prefix = "[" + store + "] ";
         }
         String secondLine = "\n" + url.toString();
 
         return (prefix + title + secondLine);
     }
 
+    public String toJsonString() throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.writeValueAsString(this);
+    }
+
+    @JsonIgnore
     public Boolean isFree() {
         // TODO: Exception for missing data
         return currentPrice.intValue() == 0;
     }
 
+    @JsonIgnore
     public Boolean isExpired() {
         // TODO: Exception for missing data
         return dateExpires.isBefore(LocalDate.now());
     }
-
-
-
-    // Private Methods
-
 
 
 
@@ -97,29 +103,28 @@ public class Deal {
         this.dateExpires = dateExpires;
     }
 
-    public List<String> getPlatformOs() {
-        return platformOs;
+    public List<String> getPlatforms() {
+        return platforms;
     }
-    public void setPlatformOs(List<String> platformOs) {
-        this.platformOs = platformOs;
+    public void setPlatforms(List<String> platforms) {
+        this.platforms = platforms;
     }
-    public void setPlatformOs(String platformOs) {
+    public void setPlatforms(String platforms) {
         List<String> l = new ArrayList<>();
-        l.add(platformOs);
-        this.platformOs = l;
+        l.add(platforms);
+        this.platforms = l;
     }
 
-    public List<String> getPlatformDrm() {
-        return platformDrm;
+    public String getStore() {
+        return store;
     }
-    public void setPlatformDrm(List<String> platformDrm) {
-        this.platformDrm = platformDrm;
+    public void setStore(String store) {
+        this.store = store;
     }
-    public void setPlatformDrm(String platformDrm) {
-        List<String> l = new ArrayList<>();
-        l.add(platformDrm);
-        this.platformDrm = l;
+    public void setStore(List<String> storeList) {
+        this.store = String.join("/", storeList);
     }
+
 
     public BigDecimal getNormalPrice() {
         return normalPrice;

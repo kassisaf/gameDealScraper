@@ -9,7 +9,7 @@ public class HumbleDeal{
     public String       human_url;            // URL (partial)
     public Long         sale_end;             // Expiry date in seconds from epoch
     public List<String> platforms;            // Platforms (OS)
-    public List<String> delivery_methods;     // Platforms (DRM)
+    public List<String> delivery_methods;     // Usually this is a list containing only "Steam"
     public List<String> full_price;           // Normal price
     public List<String> current_price;        // Sale price
     public String       featured_image_small; // Image URL (full)
@@ -29,8 +29,8 @@ public class HumbleDeal{
         d.setTitle(human_name);
         d.setUrl(baseUrl + human_url);
         d.setDateExpires(Convert.epochSecondsToLocalDate(sale_end));
-        d.setPlatformOs(platforms);
-        d.setPlatformDrm(delivery_methods);
+        d.setPlatforms(platforms);
+        d.setStore(delivery_methods);
         // TODO: Use a money lib to preserve currency code (Humble Store returns currency code for full_price and current_price at index 1)
         d.setNormalPrice(new BigDecimal(full_price.get(0)));
         d.setCurrentPrice(new BigDecimal(current_price.get(0)));
