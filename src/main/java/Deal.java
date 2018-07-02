@@ -29,9 +29,7 @@ public class Deal {
         this.setTitle(title);
         this.setUrl(url);
     }
-    public Deal(HumbleDeal humbleDeal) {
-//        this = humbleDeal.toDeal(); // TODO: Move HumbleResponse.toDeal() logic here and call it from HumbleResponse
-    }
+    // TODO: Write constructors that will accept classes returned by WebScraper
 
 
 
