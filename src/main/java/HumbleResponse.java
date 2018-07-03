@@ -22,4 +22,8 @@ public class HumbleResponse {
         }
         return null;
     }
+
+    public List<HumbleDeal> getResults() {
+        return results;
+    }
 }

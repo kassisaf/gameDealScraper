@@ -19,7 +19,6 @@ public class Deal {
     private BigDecimal   currentPrice;
     private String       sourceName;
     private URL          sourceUrl;
-    private ContentType  contentType;
     private URL          imageUrl;
 
     // Constructors
@@ -43,7 +42,7 @@ public class Deal {
         // TODO: Expand output. StringBuilder or StringBuffer may be preferable here.
         // TODO: Rewrite using StringBuilder or StringBuffer. This is ugly and bad.
         String prefix = "";
-        if (store != "") {
+        if (store != "" && store != null) {
             prefix = "[" + store + "] ";
         }
         String secondLine = "\n" + url.toString();
@@ -155,13 +154,6 @@ public class Deal {
     }
     public void setSourceUrl(String sourceUrl) {
         this.sourceUrl = Convert.stringToURL(sourceUrl);
-    }
-
-    public ContentType getContentType() {
-        return contentType;
-    }
-    public void setContentType(ContentType contentType) {
-        this.contentType = contentType;
     }
 
     public URL getImageUrl() {

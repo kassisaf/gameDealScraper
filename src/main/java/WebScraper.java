@@ -6,19 +6,10 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 
 import java.io.IOException;
 
-public class WebScraper {
-    public static void main(String[] args) {
-        createObjectMapper();
-
-        try {
-            scrapeHumbleStore();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
+public abstract class WebScraper {
     // ObjectMapper interface to allow Unirest to serialize JSON responses directly to our custom objects
     private static void createObjectMapper() {
+        // TODO: Check to see if we've already created an object mapper before making a new one
         Unirest.setObjectMapper(new ObjectMapper() {
             private com.fasterxml.jackson.databind.ObjectMapper jacksonObjectMapper
                     = new com.fasterxml.jackson.databind.ObjectMapper();
@@ -41,10 +32,15 @@ public class WebScraper {
         });
     }
 
-    private static void scrapeHumbleStore() throws UnirestException {
-        HttpResponse<HumbleResponse> response = Unirest.get(HumbleDeal.getRequestUrl()).asObject(HumbleResponse.class);
-        HumbleResponse deals = response.getBody();
-
-        System.out.print("BREAKPOINT: scrapeHumbleStore() finished"); // TODO: Remove this
+    public static HumbleResponse scrapeHumbleStore() {
+        createObjectMapper();
+        try {
+            HttpResponse<HumbleResponse> response = Unirest.get(HumbleDeal.getRequestUrl()).asObject(HumbleResponse.class);
+            HumbleResponse deals = response.getBody();
+            return deals;
+        } catch (UnirestException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

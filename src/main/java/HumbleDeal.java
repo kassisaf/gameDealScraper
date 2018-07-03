@@ -39,8 +39,8 @@ public class HumbleDeal{
         return d;
     }
 
-    private Boolean isFree() {
-        return (Integer.valueOf(current_price.get(0)) == 0);
+    public Boolean isFree() {
+        return (Double.parseDouble(current_price.get(0)) == 0);
     }
 
 
