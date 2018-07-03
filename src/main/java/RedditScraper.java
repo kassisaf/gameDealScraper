@@ -30,6 +30,20 @@ public class RedditScraper {
         //ScrapeSubreddit("AndroidGameDeals");
     }
 
+    private static Boolean isFree(String title) {
+        // This regex pattern looks for "free", but tries to avoid hitting games with "free" in the title,
+        // e.g. "Freedom Fighters", or non-free games containing a "free gift" or a "free weekend".
+        String reFreeGame = ".*(?i)[\\W](free)(?!( gift)|( weekend))[\\W].*";
+        // Filter out "buy 2 get 1" (Gamestop spam)
+        String reBuyOneGetOne = ".*(?i)(buy) [\\d] (get).*";
+        return (title.matches(reFreeGame) && !title.matches(reBuyOneGetOne));
+    }
+
+    private static List<String> parseSubmissionTitle(String title) {
+
+        return null;
+    }
+
     public static void scrapeSubreddit(String targetSub){
         // TODO: rewrite to return output instead of printing
         // Set up our reddit connection and auth
@@ -51,19 +65,10 @@ public class RedditScraper {
 
         Listing<Submission> submissions = dealSubs.next();
 
-        int viewCount = 0;
-        int freeCount = 0;
         for (Submission s : submissions) {
-            viewCount++;
 
             String title = s.getTitle();
-            // This regex pattern looks for "free", but tries to avoid hitting games with "free" in the title,
-            // e.g. "Freedom Fighters", or non-free games containing a "free gift".
-            // TODO: Filter out "Buy 2 Get 1 Free"
-            // TODO: Filter out "free weekend"
-            String reFreeGame = ".*(?i)[\\W](free)(?!( gift))[\\W].*";
-            if (title.matches(reFreeGame)){
-                freeCount++;
+            if (isFree(title)){
 
                 // Parse submission title into data we care about
                 // Note: This split relies on user submissions following rule #3 title formatting:
@@ -111,9 +116,6 @@ public class RedditScraper {
                 System.out.println(deal.toString());
             }
         }
-        System.out.println("---");
-        System.out.print("/r/" + targetSub + ": " +
-                "Found " + freeCount + " free titles out of " + viewCount + " submissions viewed.");
     }
 
 }
