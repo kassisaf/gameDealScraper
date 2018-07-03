@@ -1,12 +1,18 @@
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.Iterator;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class HumbleResponse {
+public class HumbleResponse implements Iterable<HumbleDeal>{
     @JsonProperty("results")
     private List<HumbleDeal> results;
+
+    @Override
+    public Iterator<HumbleDeal> iterator() {
+        return results.iterator();
+    }
 
     public HumbleDeal get(int index){
         return this.results.get(index);
@@ -23,7 +29,4 @@ public class HumbleResponse {
         return null;
     }
 
-    public List<HumbleDeal> getResults() {
-        return results;
-    }
 }
