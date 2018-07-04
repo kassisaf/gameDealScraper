@@ -11,8 +11,7 @@ public abstract class Convert {
 
     public static URL stringToURL(String stringUrl) {
         try {
-            URL url = new URL(stringUrl);
-            return url;
+            return new URL(stringUrl);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
