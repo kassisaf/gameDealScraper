@@ -1,6 +1,9 @@
+package domain;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import scraper.Convert;
 
 import java.math.BigDecimal;
 import java.net.URL;
@@ -32,7 +35,7 @@ public class Deal {
         this.setTitle(title);
         this.setUrl(url);
     }
-    // TODO: Write constructors that will accept classes returned by WebScraper
+    // TODO: Write constructors that will accept classes returned by scraper.WebScraper
 
 
 

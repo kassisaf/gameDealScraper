@@ -1,4 +1,7 @@
+package domain;
+
 import net.dean.jraw.models.Submission;
+import scraper.Convert;
 
 import java.util.ArrayList;
 import java.util.Arrays;

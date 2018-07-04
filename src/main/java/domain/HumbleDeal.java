@@ -1,4 +1,7 @@
+package domain;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import scraper.Convert;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -15,6 +18,7 @@ public class HumbleDeal{
     public String       featured_image_small; // Image URL (full)
 
     private static String sourceUrl = "https://www.humblebundle.com/store/search?sort=discount&filter=onsale";
+    // TODO: Extract page_size to a parser argument
     private static String requestUrl = "https://www.humblebundle.com/store/api/search?sort=discount&filter=onsale&request=1&page_size=10";
     private static String baseUrl = "https://www.humblebundle.com/store/";
 

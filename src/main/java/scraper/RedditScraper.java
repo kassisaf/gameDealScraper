@@ -1,3 +1,6 @@
+package scraper;
+
+import domain.RedditDeal;
 import net.dean.jraw.RedditClient;
 import net.dean.jraw.http.NetworkAdapter;
 import net.dean.jraw.http.OkHttpNetworkAdapter;
