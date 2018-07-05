@@ -1,14 +1,15 @@
+import domain.*;
 import scraper.*;
-import domain.HumbleDeal;
-import domain.HumbleResponse;
-import domain.RedditDeal;
 
 import java.util.List;
 
 class TestScrapers {
     public static void main(String args[]) {
+        testScrapeHumbleStore();
+        testScrapeReddit();
+    }
 
-        // Scrape Humble Store
+    private static void testScrapeHumbleStore() {
         HumbleResponse humbleDeals = WebScraper.scrapeHumbleStore();
 
         System.out.println("-----\nBegin Humble Store output\n-----");
@@ -20,8 +21,9 @@ class TestScrapers {
                 System.out.println("\tSkipping non-free result: " + d.human_name);
             }
         }
+    }
 
-        // Scrape reddit
+    private static void testScrapeReddit() {
         int count = 0;
         int countSkipped = 0;
         List<RedditDeal> redditDeals = RedditScraper.scrapeSubreddit("GameDeals");
@@ -42,6 +44,6 @@ class TestScrapers {
                 " skipped, non-free submissions out of " +
                 count +
                 " checked.");
-
     }
+
 }
