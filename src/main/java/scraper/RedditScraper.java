@@ -22,7 +22,7 @@ public abstract class RedditScraper {
     private static UserAgent userAgent = new UserAgent(
             "gameDealScraper",
             "com.akassis.gamedealscraper",
-            "v0.1",
+            "v0.0.1-PRE",
             "TheFlyingDharma"
     );
     private static ResourceBundle credentialsBundle = ResourceBundle.getBundle("credentials");
