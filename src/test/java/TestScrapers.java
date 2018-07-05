@@ -6,7 +6,7 @@ import java.util.List;
 class TestScrapers {
     public static void main(String args[]) {
         testScrapeHumbleStore();
-        testScrapeReddit();
+//        testScrapeReddit();
     }
 
     private static void testScrapeHumbleStore() {
@@ -15,10 +15,10 @@ class TestScrapers {
         System.out.println("-----\nBegin Humble Store output\n-----");
         for (HumbleDeal d : humbleDeals) {
             if (d.isFree()){
-                System.out.println(d.toDeal().toString());
+                System.out.println(d.toString());
             }
             else {
-                System.out.println("\tSkipping non-free result: " + d.human_name);
+                System.out.println("\tSkipping non-free result: " + d.getTitle());
             }
         }
     }
@@ -32,7 +32,7 @@ class TestScrapers {
         for (RedditDeal d : redditDeals) {
             count++;
             if (d.isFree()) {
-                System.out.println(d.toDeal().toString());
+                System.out.println(d.toString());
             }
             else {
                 countSkipped++;

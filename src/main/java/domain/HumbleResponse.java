@@ -23,7 +23,7 @@ public class HumbleResponse implements Iterable<HumbleDeal>{
     public HumbleDeal get(String title) {
         title = title.toLowerCase().trim();
         for (HumbleDeal d : results) {
-            String currentTitle = d.human_name.toLowerCase().trim();
+            String currentTitle = d.getTitle().toLowerCase().trim();
             if (title.equals(currentTitle)) {
                 return d;
             }

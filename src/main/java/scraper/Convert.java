@@ -1,5 +1,6 @@
 package scraper;
 
+import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Instant;
@@ -9,13 +10,17 @@ import java.util.Date;
 
 public abstract class Convert {
 
-    public static URL stringToURL(String stringUrl) {
+    public static URL stringToURL(String url) {
         try {
-            return new URL(stringUrl);
+            return new URL(url);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static BigDecimal stringToBigDecimal(String number) {
+        return BigDecimal.valueOf(Double.valueOf(number));
     }
 
     public static LocalDate dateToLocalDate (Date date){

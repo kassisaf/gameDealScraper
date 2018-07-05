@@ -11,7 +11,7 @@ import domain.HumbleResponse;
 import java.io.IOException;
 
 public abstract class WebScraper {
-    // ObjectMapper interface to allow Unirest to serialize JSON responses directly to our custom objects
+    // ObjectMapper interface to allow Unirest to deserialize JSON responses directly to our custom objects
     private static void createObjectMapper() {
         // TODO: Check to see if we've already created an object mapper before making a new one
         Unirest.setObjectMapper(new ObjectMapper() {
@@ -40,8 +40,7 @@ public abstract class WebScraper {
         createObjectMapper();
         try {
             HttpResponse<HumbleResponse> response = Unirest.get(HumbleDeal.getRequestUrl()).asObject(HumbleResponse.class);
-            HumbleResponse deals = response.getBody();
-            return deals;
+            return response.getBody();
         } catch (UnirestException e) {
             e.printStackTrace();
         }
