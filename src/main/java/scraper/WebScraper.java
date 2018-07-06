@@ -1,47 +1,33 @@
 package scraper;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectReader;
 import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.ObjectMapper;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import domain.Deal;
 import domain.HumbleDeal;
-import domain.HumbleResponse;
 
 import java.io.IOException;
+import java.util.List;
 
 public abstract class WebScraper {
-    // ObjectMapper interface to allow Unirest to deserialize JSON responses directly to our custom objects
-    private static void createObjectMapper() {
-        // TODO: Check to see if we've already created an object mapper before making a new one
-        Unirest.setObjectMapper(new ObjectMapper() {
-            private com.fasterxml.jackson.databind.ObjectMapper jacksonObjectMapper
-                    = new com.fasterxml.jackson.databind.ObjectMapper();
 
-            public <T> T readValue(String value, Class<T> valueType) {
-                try {
-                    return jacksonObjectMapper.readValue(value, valueType);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-
-            public String writeValue(Object value) {
-                try {
-                    return jacksonObjectMapper.writeValueAsString(value);
-                } catch (JsonProcessingException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
-    }
-
-    public static HumbleResponse scrapeHumbleStore() {
-        createObjectMapper();
+    public static List<Deal> scrapeHumbleStore() {
         try {
-            HttpResponse<HumbleResponse> response = Unirest.get(HumbleDeal.getRequestUrl()).asObject(HumbleResponse.class);
-            return response.getBody();
-        } catch (UnirestException e) {
+            // Send Http request for Humble Store deals page and store it as a JsonNode
+            HttpResponse<com.mashape.unirest.http.JsonNode> response = Unirest.get(HumbleDeal.getRequestUrl()).asJson();
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode node = mapper.readTree(response.getBody().toString()).get("results");
+            // Deserialize the JsonNode to a List<Deal>
+            ObjectReader reader = mapper.readerFor(new TypeReference<List<HumbleDeal>>() {
+            });
+            List<Deal> deals = reader.readValue(node);
+            return deals;
+
+        } catch (UnirestException | IOException e) {
             e.printStackTrace();
         }
         return null;

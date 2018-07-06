@@ -1,5 +1,6 @@
 package scraper;
 
+import domain.Deal;
 import domain.RedditDeal;
 import net.dean.jraw.RedditClient;
 import net.dean.jraw.http.NetworkAdapter;
@@ -27,7 +28,7 @@ public abstract class RedditScraper {
     );
     private static ResourceBundle credentialsBundle = ResourceBundle.getBundle("credentials");
 
-    public static List<RedditDeal> scrapeSubreddit(String targetSub){
+    public static List<Deal> scrapeSubreddit(String targetSub){
         // TODO: rewrite to return output instead of printing
         // Set up our reddit connection and auth
         Credentials credentialsReddit = Credentials.script(
@@ -48,7 +49,7 @@ public abstract class RedditScraper {
 
         Listing<Submission> submissions = dealSubs.next();
 
-        List<RedditDeal> deals = new ArrayList<>();
+        List<Deal> deals = new ArrayList<>();
         for (Submission s : submissions) {
             deals.add(new RedditDeal(s));
         }
