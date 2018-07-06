@@ -3,3 +3,4 @@
 /target
 /out
 src/main/resources/credentials.properties
+src/main/resources/sample*
