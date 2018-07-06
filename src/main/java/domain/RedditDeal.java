@@ -30,8 +30,9 @@ public class RedditDeal extends Deal {
         // This regex pattern looks for "free", but tries to avoid hitting games with "free" in the title,
         // e.g. "Freedom Fighters", or non-free games indicating "free gift," "free weekend," or "free shipping"
         String reFreeGame = ".*(?i)[\\W](free)(?!( gift)|( weekend)|( shipping))[\\W].*";
-        // Filter out "buy 2 get 1" (Gamestop spam)
-        String reBuyOneGetOne = ".*(?i)(buy) [\\d] (get).*";
+        // Filter out "buy x get y free"
+        String reBuyOneGetOne = ".*(?i)((buy)|(purchase)) .*( get ).*( free).*";
+
         return (rawTitle.matches(reFreeGame) && !rawTitle.matches(reBuyOneGetOne));
     }
 
