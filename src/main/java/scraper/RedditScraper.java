@@ -28,6 +28,10 @@ public abstract class RedditScraper {
     );
     private static ResourceBundle credentialsBundle = ResourceBundle.getBundle("credentials");
 
+    public static List<Deal> scrapeSubreddit(String targetSub) {
+        return scrapeSubreddit(targetSub, 100);
+    }
+
     public static List<Deal> scrapeSubreddit(String targetSub, int numOfPosts){
         if (numOfPosts > 100) {
             numOfPosts = 100;
