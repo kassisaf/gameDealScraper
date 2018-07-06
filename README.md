@@ -3,14 +3,14 @@ gameDealScraper
 
 A full-stack web application designed to find and share free games.
 
-### Planned features:
+## Planned features:
 
-##### Initial release:
+#### Initial release:
 - [x] Finds "free to own games" from [/r/GameDeals](https://www.reddit.com/r/GameDeals/) and the [Humble Store](https://www.humblebundle.com/store)
 - [ ] Displays results in an attractive, responsive webpage
 - [ ] Easily deployable to a free VPS as a single .jar file
 
-##### Future:
+#### Future:
 - [ ] Database for tracking deals as they are discovered or expire
 - [ ] Admin login for manually editing or removing expired/problematic items (e.g. bad title parse)
 - [ ] Automated reddit submission when new results are found
