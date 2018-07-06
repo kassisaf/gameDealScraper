@@ -16,10 +16,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <vaadin.version>8.4.4</vaadin.version>
+        <!-- Third-party libs -->
+        <okhttp.version>3.10.0</okhttp.version>
         <jackson.version>2.9.6</jackson.version>
         <jraw.version>1.1.0</jraw.version>
-        <unirest.version>1.4.9</unirest.version>
+        <vaadin.version>8.4.4</vaadin.version>
     </properties>
 
     <parent>
@@ -47,17 +48,17 @@
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-spring-boot-starter</artifactId>
         </dependency>
-        <!-- Unirest for easy HTTP requests -->
-        <dependency>
-            <groupId>com.mashape.unirest</groupId>
-            <artifactId>unirest-java</artifactId>
-            <version>${unirest.version}</version>
-        </dependency>
-        <!-- JRAW for reddit API bindings -->
+        <!-- JRAW for reddit API bindings. Note: Also brings in OkHttp3 -->
         <dependency>
             <groupId>net.dean.jraw</groupId>
             <artifactId>JRAW</artifactId>
             <version>${jraw.version}</version>
+        </dependency>
+        <!-- OkHttp for HTTP requests -->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>${okhttp.version}</version>
         </dependency>
         <!-- Jackson for JSON -->
         <dependency>
