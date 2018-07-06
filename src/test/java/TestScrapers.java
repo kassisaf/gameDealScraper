@@ -13,57 +13,26 @@ class TestScrapers {
     }
 
     private static List<Deal> testScrapeHumbleStore() {
-        List<Deal> humbleDeals = WebScraper.scrapeHumbleStore();
-
-        System.out.println("-----\nBegin Humble Store output\n-----");
-        for (Deal d : humbleDeals) {
-            if (d.isFree()){
-                System.out.println(d.toString());
-            }
-            else {
-                System.out.println("\tSkipping non-free result: " + d.getTitle());
-            }
-        }
+        List<Deal> humbleDeals = ScraperController.scrapeHumbleStore();
+//        System.out.println(ScraperController.getReport(humbleDeals, false));
         return humbleDeals;
     }
 
     private static List<Deal> testScrapeReddit() {
-        int count = 0;
-        int countSkipped = 0;
-        List<Deal> redditDeals = RedditScraper.scrapeSubreddit("GameDeals", 10);
-
-        System.out.println("-----\nBegin Reddit output\n-----");
-        for (Deal d : redditDeals) {
-            count++;
-            if (d.isFree()) {
-                System.out.println(d.toString());
-            }
-            else {
-                countSkipped++;
-                //System.out.println("\tSkipping non-free result: " + d.getRawTitle());
-            }
-        }
-        System.out.println("\t Omitted " +
-                countSkipped +
-                " skipped, non-free submissions out of " +
-                count +
-                " checked.");
+        List<Deal> redditDeals = ScraperController.scrapeSubreddit("GameDeals");
+//        System.out.println(ScraperController.getReport(redditDeals));
         return redditDeals;
     }
 
     private static List<Deal> testDeserializeToDeal() {
-        List<Deal> redditDeals = testScrapeReddit();
         List<Deal> humbleDeals = testScrapeHumbleStore();
+        List<Deal> redditDeals = testScrapeReddit();
 
         List<Deal> allDeals = new ArrayList<>();
         allDeals.addAll(redditDeals);
         allDeals.addAll(humbleDeals);
 
-        for (Deal d : allDeals) {
-            if (d.isFree()) {
-                System.out.println(d.toString());
-            }
-        }
+        System.out.println(ScraperController.getReport(allDeals));
 
         return allDeals;
     }

@@ -13,9 +13,9 @@ import okhttp3.Response;
 import java.io.IOException;
 import java.util.List;
 
-public abstract class WebScraper {
+abstract class WebScraper {
 
-    public static List<Deal> scrapeHumbleStore() {
+    static List<Deal> scrapeHumbleStore() {
         try {
             // Send Http request for Humble Store deals page and store it as a JsonNode
             OkHttpClient client = new OkHttpClient();

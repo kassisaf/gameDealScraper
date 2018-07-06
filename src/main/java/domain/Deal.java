@@ -17,7 +17,7 @@ public abstract class Deal {
     String       store;
     String       sourceName;
     URL          sourceUrl;
-    // These fields may not be available from all sources and are therefore optional
+    // These fields may not be available from all sources and should therefore be considered optional
     URL          imageUrl;
     List<String> platforms;
     BigDecimal   normalPrice;
@@ -34,8 +34,8 @@ public abstract class Deal {
         if (!Strings.isEmpty(store)) {
             s.append("[").append(store).append("] ");
         }
-        s.append(title);
-        s.append("\n").append(url.toString());
+        s.append(title).append("\n");
+        s.append(url.toString()).append("\n");
 
         return s.toString();
     }
@@ -64,6 +64,7 @@ public abstract class Deal {
         return false;
     }
 
+    // Getters must be present for Jackson serialization
     public String getTitle() {
         return title;
     }
