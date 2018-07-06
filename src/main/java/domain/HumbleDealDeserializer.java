@@ -34,11 +34,11 @@ public class HumbleDealDeserializer extends StdDeserializer<HumbleDeal> {
         hd.store = String.join("/", Convert.jsonElementToStringList(node, "delivery_methods"));
         hd.sourceName = sourceName;
         hd.sourceUrl = Convert.stringToURL(sourceUrl);
-        hd.expiry = (Convert.epochSecondsToLocalDate(node.get("sale_end").asLong()));
+        hd.imageUrl = Convert.stringToURL(node.get("featured_image_small").asText());
         hd.platforms = Convert.jsonElementToStringList(node, "platforms");
         hd.normalPrice = BigDecimal.valueOf(node.get("full_price").get(0).asDouble());
         hd.currentPrice = BigDecimal.valueOf(node.get("current_price").get(0).asDouble());
-        hd.imageUrl = Convert.stringToURL(node.get("featured_image_small").asText());
+        hd.expiry = (Convert.epochSecondsToLocalDate(node.get("sale_end").asLong()));
 
         return hd;
     }

@@ -1,5 +1,6 @@
 package domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.util.Strings;
@@ -17,11 +18,11 @@ public abstract class Deal {
     String       sourceName;
     URL          sourceUrl;
     // These fields may not be available from all sources and are therefore optional
-    LocalDate    expiry;
+    URL          imageUrl;
     List<String> platforms;
     BigDecimal   normalPrice;
     BigDecimal   currentPrice;
-    URL          imageUrl;
+    LocalDate    expiry;
 
     Deal() {
     }
@@ -39,24 +40,61 @@ public abstract class Deal {
         return s.toString();
     }
 
-    public String toJson() throws JsonProcessingException {
+    public String toJson() {
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.writeValueAsString(this);
+
+        try {
+            return mapper.writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
+    @JsonIgnore
     public Boolean isFree() {
         return currentPrice.equals(BigDecimal.valueOf(0));
     }
 
+    @JsonIgnore
     public Boolean isExpired() {
-        return expiry.isBefore(LocalDate.now());
+        if (expiry != null) {
+            return expiry.isBefore(LocalDate.now());
+        }
+        return false;
     }
 
     public String getTitle() {
         return title;
     }
-
     public URL getUrl() {
         return url;
+    }
+    public String getStore() {
+        return store;
+    }
+    public String getSourceName() {
+        return sourceName;
+    }
+    public URL getSourceUrl() {
+        return sourceUrl;
+    }
+    public URL getImageUrl() {
+        return imageUrl;
+    }
+    public List<String> getPlatforms() {
+        return platforms;
+    }
+    public BigDecimal getNormalPrice() {
+        return normalPrice;
+    }
+    public BigDecimal getCurrentPrice() {
+        return currentPrice;
+    }
+    public String getExpiry() {
+        if (expiry != null) {
+            return expiry.toString();
+        }
+        return null;
     }
 }

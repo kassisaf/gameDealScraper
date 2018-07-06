@@ -28,8 +28,14 @@ public abstract class RedditScraper {
     );
     private static ResourceBundle credentialsBundle = ResourceBundle.getBundle("credentials");
 
-    public static List<Deal> scrapeSubreddit(String targetSub){
-        // TODO: rewrite to return output instead of printing
+    public static List<Deal> scrapeSubreddit(String targetSub, int numOfPosts){
+        if (numOfPosts > 100) {
+            numOfPosts = 100;
+        }
+        else if (numOfPosts < 1) {
+            numOfPosts = 1;
+        }
+
         // Set up our reddit connection and auth
         Credentials credentialsReddit = Credentials.script(
                 credentialsBundle.getString("reddit_username"),
@@ -44,7 +50,7 @@ public abstract class RedditScraper {
         DefaultPaginator<Submission> dealSubs = reddit.subreddit(targetSub).posts()
                 .sorting(SubredditSort.NEW)
                 .timePeriod(TimePeriod.MONTH)
-                .limit(100)
+                .limit(numOfPosts)
                 .build();
 
         Listing<Submission> submissions = dealSubs.next();

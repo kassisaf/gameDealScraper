@@ -8,10 +8,11 @@ class TestScrapers {
     public static void main(String args[]) {
 //        testScrapeHumbleStore();
 //        testScrapeReddit();
-        testDeserializeToDeal();
+//        testDeserializeToDeal();
+        testSerialize();
     }
 
-    private static void testScrapeHumbleStore() {
+    private static List<Deal> testScrapeHumbleStore() {
         List<Deal> humbleDeals = WebScraper.scrapeHumbleStore();
 
         System.out.println("-----\nBegin Humble Store output\n-----");
@@ -23,12 +24,13 @@ class TestScrapers {
                 System.out.println("\tSkipping non-free result: " + d.getTitle());
             }
         }
+        return humbleDeals;
     }
 
-    private static void testScrapeReddit() {
+    private static List<Deal> testScrapeReddit() {
         int count = 0;
         int countSkipped = 0;
-        List<Deal> redditDeals = RedditScraper.scrapeSubreddit("GameDeals");
+        List<Deal> redditDeals = RedditScraper.scrapeSubreddit("GameDeals", 10);
 
         System.out.println("-----\nBegin Reddit output\n-----");
         for (Deal d : redditDeals) {
@@ -46,11 +48,12 @@ class TestScrapers {
                 " skipped, non-free submissions out of " +
                 count +
                 " checked.");
+        return redditDeals;
     }
 
-    private static void testDeserializeToDeal() {
-        List<Deal> redditDeals = RedditScraper.scrapeSubreddit("GameDeals");
-        List<Deal> humbleDeals = WebScraper.scrapeHumbleStore();
+    private static List<Deal> testDeserializeToDeal() {
+        List<Deal> redditDeals = testScrapeReddit();
+        List<Deal> humbleDeals = testScrapeHumbleStore();
 
         List<Deal> allDeals = new ArrayList<>();
         allDeals.addAll(redditDeals);
@@ -61,6 +64,15 @@ class TestScrapers {
                 System.out.println(d.toString());
             }
         }
+
+        return allDeals;
     }
 
+    private static void testSerialize() {
+        List<Deal> deals = testDeserializeToDeal();
+
+        for (Deal d : deals) {
+            System.out.println(d.toJson());
+        }
+    }
 }
