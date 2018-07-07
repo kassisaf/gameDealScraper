@@ -3,4 +3,4 @@
 /target
 /out
 src/main/resources/credentials.properties
-src/main/resources/static/bulma*
+src/main/resources/static/lib/bulma*
