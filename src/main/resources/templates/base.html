@@ -1,56 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>gameDealScraper</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet" >
+    <title>gameDealScraper v0.0.1-PRE</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300|Press+Start+2P|Permanent+Marker">
+    <link type="text/css" href="css/bulma.min.css" rel="stylesheet">
+    <link type="text/css" href="css/style.css" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 </head>
 <body>
-<div class="container-fluid text-center">
-    <div id="header" class="row">
-        <h1>gameDealScraper v0.0.1-PRE</h1>
-    </div>
-    <div id="content" class="row">
-        <div id="deal1" class="container">
-            Icon test:
-            <i class="fab fa-reddit-alien"></i>
-            <i class="fab fa-steam"></i>
-            <i class="fab fa-windows"></i>
-            <i class="fab fa-apple"></i>
-            <i class="fab fa-linux"></i>
-            <i class="fab fa-playstation"></i>
-            <i class="fab fa-xbox"></i>
-            <i class="fab fa-nintendo-switch"></i>
-            <i class="fas fa-heart"></i>
-            <i class="fas fa-flag"></i>
-        </div>
 
-        <div class="container col-lg-3">
-            <div class="col-sm-4">
-                <img src="images/placeimg_243_140_any.jpg" class="img-rounded">
-            </div>
-            <div class="col-sm-8">
-                <h2>Game 1</h2>
-                <div class="row">
-                    <span class="col-">
-                        <i class="fab fa-steam"></i>
-                    </span>
-                    <span class="col-">
-                        <i class="fab fa-windows"></i>
-                        <i class="fab fa-apple"></i>
-                        <i class="fab fa-linux"></i>
-                    </span>
+<section class="section">
+    <div class="container">
+
+        <h1 class="title">
+            gameDealScraper v0.0.1-PRE
+        </h1>
+        <div class="columns is-multiline">
+
+            <!-- Begin deal item -->
+            <div class="column is-6-tablet is-4-desktop">
+                <div class="notification">
+                    <article class="media">
+                        <div class="media-left">
+                            <figure class="card image is-128x128 is-vcentered has-text-centered">
+                                (No image)
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <div class="content">
+                                <p>
+                                    <strong>Game Title</strong>
+                                    <small>asdf</small>
+                                    <br>
+                                    [icons]
+                                    <br>
+                                    <small>
+                                        <em>Source:</em> Reddit, /u/dankmemer420 via /r/GameDeals
+                                    </small>
+                                </p>
+                            </div>
+                        </div>
+                    </article>
                 </div>
-                Source: Humble Store
             </div>
+            <!-- End deal item -->
+
         </div>
 
     </div>
-</div>
-<script src="js/jquery-3.3.1.slim.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+</section>
+
 </body>
 </html>

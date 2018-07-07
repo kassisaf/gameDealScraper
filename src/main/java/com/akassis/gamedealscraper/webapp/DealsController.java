@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class DealsController {
 
-    @RequestMapping(value = "/deals")
+    @RequestMapping(value = "/")
     public String deals(HttpServletRequest request, Model model) {
         String name = request.getParameter("name");
 
