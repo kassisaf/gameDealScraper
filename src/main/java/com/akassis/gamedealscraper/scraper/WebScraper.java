@@ -1,11 +1,11 @@
-package scraper;
+package com.akassis.gamedealscraper.scraper;
 
+import com.akassis.gamedealscraper.domain.Deal;
+import com.akassis.gamedealscraper.domain.HumbleDeal;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
-import domain.Deal;
-import domain.HumbleDeal;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;

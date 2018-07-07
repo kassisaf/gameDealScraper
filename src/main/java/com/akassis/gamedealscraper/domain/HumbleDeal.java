@@ -1,4 +1,4 @@
-package domain;
+package com.akassis.gamedealscraper.domain;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 

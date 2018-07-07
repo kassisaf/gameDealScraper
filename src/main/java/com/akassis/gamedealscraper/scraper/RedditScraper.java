@@ -1,7 +1,7 @@
-package scraper;
+package com.akassis.gamedealscraper.scraper;
 
-import domain.Deal;
-import domain.RedditDeal;
+import com.akassis.gamedealscraper.domain.Deal;
+import com.akassis.gamedealscraper.domain.RedditDeal;
 import net.dean.jraw.RedditClient;
 import net.dean.jraw.http.NetworkAdapter;
 import net.dean.jraw.http.OkHttpNetworkAdapter;
@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 abstract class RedditScraper {
 
     private static UserAgent userAgent = new UserAgent(
-            "gameDealScraper",
+            "gamedealscraper",
             "com.akassis.gamedealscraper",
             "v0.0.1-PRE",
             "TheFlyingDharma"

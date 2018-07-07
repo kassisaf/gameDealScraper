@@ -1,11 +1,11 @@
-package scraper;
+package com.akassis.gamedealscraper.scraper;
 
-import domain.Deal;
+import com.akassis.gamedealscraper.domain.Deal;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ScraperController {
+public abstract class Scraper {
 
     public static List<Deal> scrapeSubreddit(String targetSub) {
         return scrapeSubreddit(targetSub, 100);

@@ -1,4 +1,4 @@
-package scraper;
+package com.akassis.gamedealscraper.scraper;
 
 import com.fasterxml.jackson.databind.JsonNode;
 

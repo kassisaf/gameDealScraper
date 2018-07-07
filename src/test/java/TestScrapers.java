@@ -1,5 +1,5 @@
-import domain.*;
-import scraper.*;
+import com.akassis.gamedealscraper.domain.Deal;
+import com.akassis.gamedealscraper.scraper.Scraper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,14 +13,14 @@ class TestScrapers {
     }
 
     private static List<Deal> testScrapeHumbleStore() {
-        List<Deal> humbleDeals = ScraperController.scrapeHumbleStore();
-//        System.out.println(ScraperController.getReport(humbleDeals, false));
+        List<Deal> humbleDeals = Scraper.scrapeHumbleStore();
+//        System.out.println(Scraper.getReport(humbleDeals, false));
         return humbleDeals;
     }
 
     private static List<Deal> testScrapeReddit() {
-        List<Deal> redditDeals = ScraperController.scrapeSubreddit("GameDeals");
-//        System.out.println(ScraperController.getReport(redditDeals));
+        List<Deal> redditDeals = Scraper.scrapeSubreddit("GameDeals");
+//        System.out.println(Scraper.getReport(redditDeals));
         return redditDeals;
     }
 
@@ -32,13 +32,13 @@ class TestScrapers {
         allDeals.addAll(redditDeals);
         allDeals.addAll(humbleDeals);
 
-        System.out.println(ScraperController.getReport(allDeals));
+//        System.out.println(Scraper.getReport(allDeals));
 
         return allDeals;
     }
 
     private static void testSerialize() {
-        List<Deal> deals = testDeserializeToDeal();
+        List<Deal> deals = Scraper.getFreeResults(testDeserializeToDeal());
 
         for (Deal d : deals) {
             System.out.println(d.toJson());

@@ -1,4 +1,4 @@
-package domain;
+package com.akassis.gamedealscraper.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;

@@ -1,11 +1,11 @@
-package domain;
+package com.akassis.gamedealscraper.domain;
 
+import com.akassis.gamedealscraper.scraper.Convert;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import scraper.Convert;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -25,7 +25,7 @@ public class HumbleDealDeserializer extends StdDeserializer<HumbleDeal> {
 
     @Override
     public HumbleDeal deserialize(JsonParser jsonParser, DeserializationContext context)
-            throws IOException, JsonProcessingException {
+            throws IOException {
         JsonNode node = jsonParser.getCodec().readTree(jsonParser);
 
         HumbleDeal hd = new HumbleDeal();

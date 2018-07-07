@@ -1,7 +1,7 @@
-package domain;
+package com.akassis.gamedealscraper.domain;
 
+import com.akassis.gamedealscraper.scraper.Convert;
 import net.dean.jraw.models.Submission;
-import scraper.Convert;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
