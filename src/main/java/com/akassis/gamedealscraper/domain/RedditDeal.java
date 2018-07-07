@@ -28,8 +28,8 @@ public class RedditDeal extends Deal {
     @Override
     public Boolean isFree() {
         // This regex pattern looks for "free", but tries to avoid hitting games with "free" in the title,
-        // e.g. "Freedom Fighters", or non-free games indicating "free gift," "free weekend," or "free shipping"
-        String reFreeGame = ".*(?i)[\\W](free)(?!( gift)|( weekend)|( shipping))[\\W].*";
+        // or non-free games that are DRM-free or include a "free gift," "free weekend," or "free shipping"
+        String reFreeGame = ".*(?i)[\\W](?<!(drm.))(free)(?!( gift)|( weekend)|( shipping))[\\W].*";
         // Filter out "buy x get y free"
         String reBuyOneGetOne = ".*(?i)((buy)|(purchase)) .*( get ).*( free).*";
 
