@@ -12,7 +12,9 @@
                 </div>
                 <div class="media-content">
                     <div class="content">
-                        <h3 th:text="${deal.title}" class="condensed">Game Title</h3>
+                        <a th:attr="href=${deal.url}" href="#" target="_blank" style="text-decoration: none;">
+                            <h3 th:text="${deal.title}" class="condensed">Game Title</h3>
+                        </a>
                         <div id="icons" class="has-icon has-text-grey">
                             <i class="fab fa-steam"></i>
                             -
@@ -21,12 +23,16 @@
                             <i class="fab fa-linux"></i>
                         </div>
                         <div class="has-text-grey">
-                            <em th:text="${deal.sourceName}" class="tiny condensed">via Reddit, /r/GameDeals</em>
+                            <a th:attr="href=${deal.sourceUrl}" href="#" target="_blank" style="text-decoration: none;">
+                                <em th:text="${deal.sourceName}" class="tiny condensed">via Reddit, /r/GameDeals</em>
+                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="media-right has-text-grey-light">
-                    <i class="fas fa-ellipsis-v tiny"></i>
+                    <a href="#">
+                        <i class="fas fa-ellipsis-v tiny"></i>
+                    </a>
                 </div>
             </article>
         </div>

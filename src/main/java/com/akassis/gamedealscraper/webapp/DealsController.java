@@ -17,7 +17,9 @@ public class DealsController {
 
     @RequestMapping(value = "/")
     public String deals(Model model) {
-        List<Deal> deals = Scraper.scrapeHumbleStore();
+//        List<Deal> deals = Scraper.scrapeHumbleStore();
+        List<Deal> deals = Scraper.scrapeSubreddit("GameDeals");
+        deals = Scraper.getFreeResults(deals);
         model.addAttribute("deals", deals);
         return "base";
 
