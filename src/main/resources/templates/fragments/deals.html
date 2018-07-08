@@ -1,34 +1,36 @@
-<!doctype HTML><html><head><link type="text/css" href="../../static/css/style.css" rel="stylesheet"></head><body>
-
 <div th:fragment="deals" class="columns is-multiline">
+
     <!-- Begin Deal items -->
     <!--<div th:each="deal : ${deals}">-->
-    <div class="column is-12-mobile is-6-tablet is-4-desktop">
+    <div class="column is-12-mobile is-6-tablet is-4-widescreen">
         <div class="notification">
             <article class="media">
                 <div class="media-left">
-                    <figure class="card image is-128x128 has-text-centered">
-                        <div style="background-image: url('images/catnap128.jpg'); background-repeat: no-repeat; width: 100%; height: 100%;"></div>
+                    <figure class="card image is-128x128 has-text-centered has-background-white-ter">
+                        <img src="images/catnap128.jpg" class="preview-image">
                     </figure>
                 </div>
                 <div class="media-content">
                     <div class="content">
-                        <h2 th:text="'Kitty Nap: Napotheosis Game of the Year Edition'" class="condensed">Game Title</h2>
-                        <p>
+                        <h3 th:text="'Kitty Nap: Napotheosis Game of the Year Edition'" class="condensed">Game Title</h3>
+                        <div id="icons" class="has-icon has-text-grey">
                             <i class="fab fa-steam"></i>
                             -
                             <i class="fab fa-windows"></i>
                             <i class="fab fa-apple"></i>
                             <i class="fab fa-linux"></i>
-                            <br>
+                        </div>
+                        <div class="has-text-grey">
                             <em class="tiny condensed">via Reddit, /r/GameDeals</em>
-                        </p>
+                        </div>
                     </div>
+                </div>
+                <div class="media-right has-text-grey-light">
+                    <i class="fas fa-ellipsis-v tiny"></i>
                 </div>
             </article>
         </div>
     </div>
     <!-- End of Deal items -->
-</div>
 
-</body></html>
+</div>

@@ -8,6 +8,7 @@
 .appTitle2 {
     font-family: 'Permanent Marker', cursive;
     font-size: 1.5rem;
+    transform: translateY(-0.1rem);
 }
 
 .tiny {
@@ -15,6 +16,11 @@
 }
 .condensed {
     font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.preview-image {
+    height: 100% !important;
+    object-fit: cover;
 }
 
 .fa-reddit-alien {
