@@ -20,6 +20,7 @@ public class RedditDeal extends Deal {
         url = Convert.stringToURL(submission.getUrl());
         sourceName = "Reddit, /r/" + submission.getSubreddit();
         sourceUrl = Convert.stringToURL("https://www.reddit.com" + submission.getPermalink());
+        imageUrl = Convert.stringToURL(submission.getThumbnail());
         if (isFree()) {
             currentPrice = BigDecimal.valueOf(0);
         }
