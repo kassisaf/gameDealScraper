@@ -18,7 +18,7 @@ public class RedditDeal extends Deal {
         rawTitle = submission.getTitle();
         parseSubmissionTitle(); // Updates title field, and store field if submission title can be parsed cleanly
         url = Convert.stringToURL(submission.getUrl());
-        sourceName = "Reddit (/u/" + submission.getAuthor() + " via /r/" + submission.getSubreddit() + ")";
+        sourceName = "Reddit, /r/" + submission.getSubreddit();
         sourceUrl = Convert.stringToURL("https://www.reddit.com" + submission.getPermalink());
         if (isFree()) {
             currentPrice = BigDecimal.valueOf(0);
