@@ -23,10 +23,6 @@ public abstract class Convert {
         return null;
     }
 
-    public static BigDecimal stringToBigDecimal(String number) {
-        return BigDecimal.valueOf(Double.valueOf(number));
-    }
-
     public static LocalDate dateToLocalDate (Date date){
         return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     }
