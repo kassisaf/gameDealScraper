@@ -7,7 +7,7 @@ A full-stack web application designed to find and share free games.
 
 #### Initial release:
 - [x] Finds "free to own" games from [/r/GameDeals](https://www.reddit.com/r/GameDeals/) and the [Humble Store](https://www.humblebundle.com/store)
-- [ ] Displays results in an attractive, responsive webpage
+- [X] Displays results in an attractive, responsive webpage
 - [ ] Easily deployable to a free VPS as a single .jar file
 
 #### Future:
