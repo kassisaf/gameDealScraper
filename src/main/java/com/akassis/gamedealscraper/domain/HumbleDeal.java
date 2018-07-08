@@ -9,8 +9,7 @@ public class HumbleDeal extends Deal {
     private static final String requestUrl =
             "https://www.humblebundle.com/store/api/search?sort=discount&filter=onsale&request=1&page_size=10";
 
-    public HumbleDeal() {
-
+    HumbleDeal() {
     }
 
     public static String getRequestUrl() {
