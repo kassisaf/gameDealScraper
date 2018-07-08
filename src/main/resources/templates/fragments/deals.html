@@ -2,25 +2,26 @@
 
 <div th:fragment="deals" class="columns is-multiline">
     <!-- Begin Deal items -->
-    <!--<div th:each="deal : ${deals}" class="column is-6-tablet is-4-desktop">-->
-    <div class="column is-6-tablet is-4-desktop">
+    <!--<div th:each="deal : ${deals}">-->
+    <div class="column is-12-mobile is-6-tablet is-4-desktop">
         <div class="notification">
             <article class="media">
                 <div class="media-left">
-                    <figure class="card image is-128x128 is-vcentered has-text-centered">
-                        (No image)
+                    <figure class="card image is-128x128 has-text-centered">
+                        <div style="background-image: url('images/catnap128.jpg'); background-repeat: no-repeat; width: 100%; height: 100%;"></div>
                     </figure>
                 </div>
                 <div class="media-content">
                     <div class="content">
+                        <h2 th:text="'Kitty Nap: Napotheosis Game of the Year Edition'" class="condensed">Game Title</h2>
                         <p>
-                            <strong th:text="'Game Title'">No title found</strong>
+                            <i class="fab fa-steam"></i>
+                            -
+                            <i class="fab fa-windows"></i>
+                            <i class="fab fa-apple"></i>
+                            <i class="fab fa-linux"></i>
                             <br>
-                            [icons]
-                            <br>
-                            <small>
-                                <em>Source:</em> Reddit, /u/dankmemer420 via /r/GameDeals
-                            </small>
+                            <em class="tiny condensed">via Reddit, /r/GameDeals</em>
                         </p>
                     </div>
                 </div>
