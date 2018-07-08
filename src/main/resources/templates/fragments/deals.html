@@ -1,0 +1,31 @@
+<div th:fragment="deals" class="columns is-multiline">
+
+    <!-- Begin Deal items -->
+    <!--<div th:each="deal : ${deals}" class="column is-6-tablet is-4-desktop">-->
+    <div class="column is-6-tablet is-4-desktop">
+        <div class="notification">
+            <article class="media">
+                <div class="media-left">
+                    <figure class="card image is-128x128 is-vcentered has-text-centered">
+                        (No image)
+                    </figure>
+                </div>
+                <div class="media-content">
+                    <div class="content">
+                        <p>
+                            <strong th:text="'Game Title'">No title found</strong>
+                            <br>
+                            [icons]
+                            <br>
+                            <small>
+                                <em>Source:</em> Reddit, /u/dankmemer420 via /r/GameDeals
+                            </small>
+                        </p>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+    <!-- End of Deal items -->
+
+</div>
