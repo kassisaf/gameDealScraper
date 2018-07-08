@@ -20,7 +20,7 @@
 
 .preview-image {
     height: 100% !important;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .fa-reddit-alien {

@@ -2,17 +2,17 @@
 
     <!-- Begin Deal items -->
     <!--<div th:each="deal : ${deals}">-->
-    <div class="column is-12-mobile is-6-tablet is-4-fullhd">
+    <div th:each="deal : ${deals}" class="column is-12-mobile is-6-tablet is-4-fullhd">
         <div class="notification">
             <article class="media">
                 <div class="media-left">
                     <figure class="card image is-128x128 has-text-centered has-background-white-ter">
-                        <img src="images/catnap128.jpg" class="preview-image">
+                        <img th:attr="src=${deal.imageUrl}" src="catnap128.jpg" class="preview-image">
                     </figure>
                 </div>
                 <div class="media-content">
                     <div class="content">
-                        <h3 th:text="'Kitty Nap: Napotheosis Game of the Year Edition'" class="condensed">Game Title</h3>
+                        <h3 th:text="${deal.title}" class="condensed">Game Title</h3>
                         <div id="icons" class="has-icon has-text-grey">
                             <i class="fab fa-steam"></i>
                             -
@@ -21,7 +21,7 @@
                             <i class="fab fa-linux"></i>
                         </div>
                         <div class="has-text-grey">
-                            <em class="tiny condensed">via Reddit, /r/GameDeals</em>
+                            <em th:text="${deal.sourceName}" class="tiny condensed">via Reddit, /r/GameDeals</em>
                         </div>
                     </div>
                 </div>
