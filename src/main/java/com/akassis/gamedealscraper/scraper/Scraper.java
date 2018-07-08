@@ -11,10 +11,16 @@ public abstract class Scraper {
         return scrapeSubreddit(targetSub, 100);
     }
     public static List<Deal> scrapeSubreddit(String targetSub, int numOfPosts) {
-        return RedditScraper.scrapeSubreddit(targetSub, numOfPosts);
+        System.out.println(getTimeStamp() + "  Scraping /r/" + targetSub + "...");
+        List<Deal> deals = RedditScraper.scrapeSubreddit(targetSub, numOfPosts);
+        System.out.println(getTimeStamp() + "  Returning " + deals.size() + " results.");
+        return deals;
     }
 
     public static List<Deal> scrapeHumbleStore() {
+        System.out.println(getTimeStamp() + "  Scraping Humble Store...");
+        List<Deal> deals = WebScraper.scrapeHumbleStore();
+        System.out.println(getTimeStamp() + "  Returning " + deals.size() + " results.");
         return WebScraper.scrapeHumbleStore();
     }
 
@@ -28,52 +34,8 @@ public abstract class Scraper {
         return freebies;
     }
 
-    public static String getReport(List<Deal> deals){
-        return getReport(deals, true);
-    }
-    public static String getReport(List<Deal> deals, boolean freeOnly) {
-        List<Deal> freeDeals = getFreeResults(deals);
-        int total = deals.size();
-        int free = freeDeals.size();
-        StringBuilder sb = new StringBuilder();
-        String separator = "-----";
-
-        sb.append(separator)
-                .append("\n")
-                .append("Begin report");
-
-        if (freeOnly) {
-            deals = getFreeResults(deals);
-            sb.append(" (Showing FREE results only)");
-        }
-        else {
-            sb.append(" (Showing ALL results)");
-        }
-
-        sb.append("\n")
-                .append(separator)
-                .append("\n");
-
-        for (Deal d : deals) {
-            if (freeOnly) {
-                if (d.isFree()) {
-                    sb.append(d.toString());
-                }
-            }
-            else {
-                sb.append(d.toString());
-            }
-        }
-
-        sb.append(separator)
-                .append("\n")
-                .append("Found ")
-                .append(free)
-                .append(" free results out of ")
-                .append(total)
-                .append(" checked.\n");
-
-        return sb.toString();
+    private static String getTimeStamp(){
+        return new java.sql.Timestamp(System.currentTimeMillis()).toString();
     }
 
 }

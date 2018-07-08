@@ -14,13 +14,11 @@ class TestScrapers {
 
     private static List<Deal> testScrapeHumbleStore() {
         List<Deal> humbleDeals = Scraper.scrapeHumbleStore();
-//        System.out.println(Scraper.getReport(humbleDeals, false));
         return humbleDeals;
     }
 
     private static List<Deal> testScrapeReddit() {
         List<Deal> redditDeals = Scraper.scrapeSubreddit("GameDeals");
-//        System.out.println(Scraper.getReport(redditDeals));
         return redditDeals;
     }
 
@@ -32,7 +30,6 @@ class TestScrapers {
         allDeals.addAll(redditDeals);
         allDeals.addAll(humbleDeals);
 
-//        System.out.println(Scraper.getReport(allDeals));
 
         return allDeals;
     }
