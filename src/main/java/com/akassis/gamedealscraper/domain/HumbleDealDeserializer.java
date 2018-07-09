@@ -2,13 +2,14 @@ package com.akassis.gamedealscraper.domain;
 
 import com.akassis.gamedealscraper.scraper.Convert;
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Comparator;
+import java.util.List;
 
 public class HumbleDealDeserializer extends StdDeserializer<HumbleDeal> {
     private static final String sourceName = "Humble Store";
@@ -35,7 +36,12 @@ public class HumbleDealDeserializer extends StdDeserializer<HumbleDeal> {
         hd.sourceName = sourceName;
         hd.sourceUrl = Convert.stringToURL(sourceUrl);
         hd.imageUrl = Convert.stringToURL(node.get("featured_image_small").asText());
-        hd.platforms = Convert.jsonElementToStringList(node, "platforms");
+
+        // Sort the list of platforms in reverse alphabetical order so that Windows > Mac > Linux
+        List<String> platforms = Convert.jsonElementToStringList(node, "platforms");
+        platforms.sort(Comparator.reverseOrder());
+        hd.platforms = platforms;
+
         hd.normalPrice = BigDecimal.valueOf(node.get("full_price").get(0).asDouble());
         hd.currentPrice = BigDecimal.valueOf(node.get("current_price").get(0).asDouble());
         hd.expiry = (Convert.epochSecondsToLocalDate(node.get("sale_end").asLong()));
