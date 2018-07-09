@@ -24,9 +24,6 @@ public abstract class Deal {
     BigDecimal   currentPrice;
     LocalDate    expiry;
 
-    Deal() {
-    }
-
     @Override
     public String toString() {
         StringBuilder s = new StringBuilder();
@@ -40,6 +37,7 @@ public abstract class Deal {
         return s.toString();
     }
 
+    // Serialization is unnecessary with the current frontend, but leaving this here in case that changes in the future.
     public String toJson() {
         ObjectMapper mapper = new ObjectMapper();
 
