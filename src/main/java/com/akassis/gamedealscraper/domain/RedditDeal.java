@@ -60,7 +60,7 @@ public class RedditDeal extends Deal {
         splitTitle.removeAll(Arrays.asList("", null));
         // If the submission title doesn't split cleanly into our expected number of elements, disregard split results.
         if (splitTitle.size() >= 3) {
-            store = splitTitle.get(0).trim();
+            vendors = Convert.stringToList(splitTitle.get(0).toLowerCase().trim());
             title = splitTitle.get(1).trim();
         }
         else {

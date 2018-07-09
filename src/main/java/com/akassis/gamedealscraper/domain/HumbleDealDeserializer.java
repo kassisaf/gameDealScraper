@@ -32,7 +32,11 @@ public class HumbleDealDeserializer extends StdDeserializer<HumbleDeal> {
         HumbleDeal hd = new HumbleDeal();
         hd.title = node.get("human_name").asText();
         hd.url = Convert.stringToURL(baseUrl + node.get("human_url").asText());
-        hd.store = String.join("/", Convert.jsonElementToStringList(node, "delivery_methods"));
+
+        List<String> vendors = Convert.jsonElementToStringList(node, "delivery_methods");
+        vendors.sort(Comparator.reverseOrder());
+        hd.vendors = vendors;
+
         hd.sourceName = sourceName;
         hd.sourceUrl = Convert.stringToURL(sourceUrl);
         hd.imageUrl = Convert.stringToURL(node.get("featured_image_small").asText());

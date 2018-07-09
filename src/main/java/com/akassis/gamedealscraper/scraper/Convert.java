@@ -2,12 +2,14 @@ package com.akassis.gamedealscraper.scraper;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
+import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -38,8 +40,10 @@ public abstract class Convert {
         return Arrays.asList(elementArray);
     }
 
-    public static String capitalizeFirstLetter(String s) {
-        return s.substring(0, 1).toUpperCase() + s.substring(1);
+    public static List<String> stringToList(String string) {
+        List<String> list = new ArrayList<>();
+        list.add(string);
+        return list;
     }
 
 }

@@ -18,11 +18,11 @@
                             <h3 th:text="${deal.title}" class="condensed">Game Title</h3>
                         </a>
                         <div id="icons" class="has-icon has-text-grey">
-                            <span class="vendors">
-                                <i class="fab fa-steam"></i>
+                            <span th:each="vendor : ${deal.vendors}">
+                                <i  th:attr="class=${iconMap.get(vendor)}"></i>
                             </span>
                             -
-                            <span id="platforms" th:each="platform : ${deal.platforms}">
+                            <span th:each="platform : ${deal.platforms}">
                                 <i  th:attr="class=${iconMap.get(platform)}"></i>
                             </span>
                         </div>
