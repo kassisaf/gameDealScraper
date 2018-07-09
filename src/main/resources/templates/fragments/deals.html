@@ -18,11 +18,13 @@
                             <h3 th:text="${deal.title}" class="condensed">Game Title</h3>
                         </a>
                         <div id="icons" class="has-icon has-text-grey">
-                            <i class="fab fa-steam"></i>
+                            <span class="vendors">
+                                <i class="fab fa-steam"></i>
+                            </span>
                             -
-                            <i class="fab fa-windows"></i>
-                            <i class="fab fa-apple"></i>
-                            <i class="fab fa-linux"></i>
+                            <span id="platforms" th:each="platform : ${deal.platforms}">
+                                <i  th:attr="class=${iconMap.get(platform)}"></i>
+                            </span>
                         </div>
                         <div class="has-text-grey">
                             <a th:attr="href=${deal.sourceUrl}" href="#" target="_blank" style="text-decoration: none;">
