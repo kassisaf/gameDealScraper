@@ -28,13 +28,20 @@ public class RedditDeal extends Deal {
 
     @Override
     public Boolean isFree() {
-        // This regex pattern looks for "free", but tries to avoid hitting games with "free" in the title,
-        // or non-free games that are DRM-free or include a "free gift," "free weekend," or "free shipping"
-        String reFreeGame = ".*(?i)[\\W](?<!(drm.))(free)(?!( gift)|( weekend)|( shipping))[\\W].*";
-        // Filter out "buy x get y free"
-        String reBuyOneGetOne = ".*(?i)((buy)|(purchase)) .*( get ).*( free).*";
+        // Since we call isFree() from the constructor and set currentPrice to 0 if true, we can just use currentPrice
+        // for future isFree() calls rather than evaluating the regex again.
+        if (currentPrice == null) {
+            // This regex pattern looks for "free", but tries to avoid hitting games with "free" in the title,
+            // or non-free games that are DRM-free or include a "free gift," "free weekend," or "free shipping"
+            String reFreeGame = ".*(?i)[\\W](?<!(drm.))(free)(?!( gift)|( weekend)|( shipping))[\\W].*";
+            // Filter out "buy x get y free"
+            String reBuyOneGetOne = ".*(?i)((buy)|(purchase)) .*( get ).*( free).*";
 
-        return (rawTitle.matches(reFreeGame) && !rawTitle.matches(reBuyOneGetOne));
+            return (rawTitle.matches(reFreeGame) && !rawTitle.matches(reBuyOneGetOne));
+        }
+        else {
+            return super.isFree();
+        }
     }
 
     private void parseSubmissionTitle()
