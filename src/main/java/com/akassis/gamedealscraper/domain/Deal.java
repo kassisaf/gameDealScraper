@@ -8,7 +8,9 @@ import org.apache.logging.log4j.util.Strings;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public abstract class Deal {
     // All deals should be able to implement these fields as a minimum
@@ -23,6 +25,16 @@ public abstract class Deal {
     BigDecimal   normalPrice;
     BigDecimal   currentPrice;
     LocalDate    expiry;
+    // Static map for translating store and platform strings to their corresponding FontAwesome <i> tag classes
+    public static Map<String, String> iconMap = new HashMap<String, String>();
+    static {
+        iconMap.put("download", "fas fa-unlock-alt"); // TODO: Find a better icon for this (DRM-free)
+        iconMap.put("steam",    "fab fa-steam");
+        iconMap.put("twitch",   "fab fa-twitch");
+        iconMap.put("windows",  "fab fa-windows");
+        iconMap.put("mac",      "fab fa-apple");
+        iconMap.put("linux",    "fab fa-linux");
+    }
 
     @Override
     public String toString() {
