@@ -34,7 +34,7 @@ public abstract class Scraper {
         return freebies;
     }
 
-    private static String getTimeStamp(){
+    public static String getTimeStamp(){
         return new java.sql.Timestamp(System.currentTimeMillis()).toString();
     }
 

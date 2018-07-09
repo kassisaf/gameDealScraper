@@ -18,6 +18,7 @@ public abstract class Convert {
         try {
             return new URL(url);
         } catch (MalformedURLException e) {
+            System.out.println(Scraper.getTimeStamp() + "Could not convert to URL: " + url);
             e.printStackTrace();
         }
         return null;
