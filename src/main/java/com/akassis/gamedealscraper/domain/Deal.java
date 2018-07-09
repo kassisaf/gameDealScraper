@@ -28,12 +28,19 @@ public abstract class Deal {
     // Static map for translating store and platform strings to their corresponding FontAwesome <i> tag classes
     public static Map<String, String> iconMap = new HashMap<String, String>();
     static {
-        iconMap.put("download", "fas fa-unlock-alt"); // TODO: Find a better icon for this (DRM-free)
-        iconMap.put("steam",    "fab fa-steam");
-        iconMap.put("twitch",   "fab fa-twitch");
-        iconMap.put("windows",  "fab fa-windows");
-        iconMap.put("mac",      "fab fa-apple");
-        iconMap.put("linux",    "fab fa-linux");
+        // Vendors
+        iconMap.put("download",    "fas fa-unlock-alt"); // TODO: Find a better icon for this (DRM-free)
+        iconMap.put("steam",       "fab fa-steam");
+        iconMap.put("twitch",      "fab fa-twitch");
+        iconMap.put("google-play", "fab fa-google-play");
+        iconMap.put("ios",         "fab fa-app-store-ios");
+        // Platforms
+        iconMap.put("windows",     "fab fa-windows");
+        iconMap.put("mac",         "fab fa-apple");
+        iconMap.put("linux",       "fab fa-linux");
+        iconMap.put("xbox",        "fab fa-xbox");
+        iconMap.put("playstation", "fab fa-playstation");
+        iconMap.put("switch",      "fab fa-nintendo-switch");
     }
 
     @Override
