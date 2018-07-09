@@ -17,6 +17,7 @@ public abstract class Deal {
     String       title;
     URL          url;
     String       store;
+    List<String> vendors; // TODO: This should replace `store` once implemented
     String       sourceName;
     URL          sourceUrl;
     // These fields may not be available from all sources and should therefore be considered optional
@@ -26,7 +27,7 @@ public abstract class Deal {
     BigDecimal   currentPrice;
     LocalDate    expiry;
     // Static map for translating store and platform strings to their corresponding FontAwesome <i> tag classes
-    public static Map<String, String> iconMap = new HashMap<String, String>();
+    private static Map<String, String> iconMap = new HashMap<String, String>();
     static {
         // Vendors
         iconMap.put("download",    "fas fa-unlock-alt"); // TODO: Find a better icon for this (DRM-free)
@@ -81,6 +82,11 @@ public abstract class Deal {
         return false;
     }
 
+    @JsonIgnore
+    public static Map<String, String> getIconMap() {
+        return iconMap;
+    }
+
     // Getters must be present for Jackson serialization
     public String getTitle() {
         return title;
@@ -90,6 +96,9 @@ public abstract class Deal {
     }
     public String getStore() {
         return store;
+    }
+    public List<String> getVendors() {
+        return vendors;
     }
     public String getSourceName() {
         return sourceName;

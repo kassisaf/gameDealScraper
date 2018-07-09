@@ -20,13 +20,14 @@ public class DealsController {
         List<Deal> humbleDeals = Scraper.scrapeHumbleStore();
         deals.addAll(humbleDeals);
 
-//        List<Deal> redditDeals = Scraper.scrapeSubreddit("GameDeals");
-//        deals.addAll(redditDeals);
+        List<Deal> redditDeals = Scraper.scrapeSubreddit("GameDeals");
+        redditDeals = Scraper.getFreeResults(redditDeals);
+        deals.addAll(redditDeals);
 
 //        deals = Scraper.getFreeResults(deals);
 
         model.addAttribute("deals", deals);
-        model.addAttribute("iconMap", Deal.iconMap);
+        model.addAttribute("iconMap", Deal.getIconMap());
         return "base";
     }
 }
