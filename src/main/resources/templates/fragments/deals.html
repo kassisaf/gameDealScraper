@@ -15,20 +15,23 @@
                 <div class="media-content">
                     <div class="content">
                         <a th:attr="href=${deal.url}" href="#" target="_blank" style="text-decoration: none;">
-                            <h3 th:text="${deal.title}" class="condensed">Game Title</h3>
+                            <h3 th:text="${deal.title}" class="condensed">Title</h3>
                         </a>
                         <div id="icons" class="has-icon has-text-grey">
                             <span th:each="vendor : ${deal.vendors}">
-                                <i  th:attr="class=${iconMap.get(vendor)}"></i>
+                                <i th:attr="class=${iconMap.get(vendor)}, alt=${vendor}"></i>
                             </span>
                             <span th:if="${not (#lists.isEmpty(deal.vendors) or #lists.isEmpty(deal.platforms))}">-</span>
                             <span th:each="platform : ${deal.platforms}">
-                                <i  th:attr="class=${iconMap.get(platform)}"></i>
+                                <i th:attr="class=${iconMap.get(platform)}, alt=${platform}"></i>
                             </span>
                         </div>
                         <div class="has-text-grey">
                             <a th:attr="href=${deal.sourceUrl}" href="#" target="_blank" style="text-decoration: none;">
-                                <em th:text="${deal.sourceName}" class="tiny condensed">via Reddit, /r/GameDeals</em>
+                                <em th:text="${deal.sourceName}" class="tiny condensed">Source</em>
+                                <em class="tiny condensed" th:if="${deal.expiry} != null">
+                                    (expires <span th:text="${deal.expiry}"></span>)
+                                </em>
                             </a>
                         </div>
                     </div>
