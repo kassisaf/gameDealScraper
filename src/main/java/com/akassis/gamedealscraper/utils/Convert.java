@@ -1,9 +1,7 @@
-package com.akassis.gamedealscraper.scraper;
+package com.akassis.gamedealscraper.utils;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-import java.lang.reflect.Array;
-import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Instant;
@@ -20,7 +18,7 @@ public abstract class Convert {
         try {
             return new URL(url);
         } catch (MalformedURLException e) {
-            System.out.println(Scraper.getTimeStamp() + "Could not convert to URL: " + url);
+            System.out.println(Logger.getTimeStamp() + "Could not convert to URL: " + url);
             e.printStackTrace();
         }
         return null;

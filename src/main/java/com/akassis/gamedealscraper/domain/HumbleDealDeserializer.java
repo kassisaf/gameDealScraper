@@ -1,6 +1,6 @@
 package com.akassis.gamedealscraper.domain;
 
-import com.akassis.gamedealscraper.scraper.Convert;
+import com.akassis.gamedealscraper.utils.Convert;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;

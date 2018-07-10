@@ -1,6 +1,6 @@
 package com.akassis.gamedealscraper.domain;
 
-import com.akassis.gamedealscraper.scraper.Convert;
+import com.akassis.gamedealscraper.utils.Convert;
 import net.dean.jraw.models.Submission;
 
 import java.math.BigDecimal;

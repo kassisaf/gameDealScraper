@@ -1,6 +1,7 @@
 package com.akassis.gamedealscraper.scraper;
 
 import com.akassis.gamedealscraper.domain.Deal;
+import com.akassis.gamedealscraper.utils.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,16 +12,16 @@ public abstract class Scraper {
         return scrapeSubreddit(targetSub, 100);
     }
     public static List<Deal> scrapeSubreddit(String targetSub, int numOfPosts) {
-        System.out.println(getTimeStamp() + "  Scraping /r/" + targetSub + "...");
+        System.out.println(Logger.getTimeStamp() + "  Scraping /r/" + targetSub + "...");
         List<Deal> deals = RedditScraper.scrapeSubreddit(targetSub, numOfPosts);
-        System.out.println(getTimeStamp() + "  Returning " + deals.size() + " results.");
+        System.out.println(Logger.getTimeStamp() + "  Returning " + deals.size() + " results.");
         return deals;
     }
 
     public static List<Deal> scrapeHumbleStore() {
-        System.out.println(getTimeStamp() + "  Scraping Humble Store...");
+        System.out.println(Logger.getTimeStamp() + "  Scraping Humble Store...");
         List<Deal> deals = WebScraper.scrapeHumbleStore();
-        System.out.println(getTimeStamp() + "  Returning " + deals.size() + " results.");
+        System.out.println(Logger.getTimeStamp() + "  Returning " + deals.size() + " results.");
         return WebScraper.scrapeHumbleStore();
     }
 
@@ -34,8 +35,6 @@ public abstract class Scraper {
         return freebies;
     }
 
-    public static String getTimeStamp(){
-        return new java.sql.Timestamp(System.currentTimeMillis()).toString();
-    }
+
 
 }
