@@ -8,7 +8,7 @@
                 <div class="media-left">
                     <figure class="card image is-128x128">
                         <a th:attr="href=${deal.url}" href="#" target="_blank" style="text-decoration: none;">
-                            <img th:attr="src=${deal.imageUrl}, alt=${deal.store}" class="preview-image has-text-centered condensed">
+                            <img th:attr="src=${deal.imageUrl}, alt=${deal.vendors.get(0)}" class="preview-image has-text-centered condensed">
                         </a>
                     </figure>
                 </div>
