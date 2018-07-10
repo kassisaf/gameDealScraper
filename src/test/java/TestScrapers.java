@@ -8,8 +8,8 @@ class TestScrapers {
 //        testScrapeHumbleStore();
 //        testScrapeReddit();
 //        testDeserializeToDeal();
-//        testSerialize();
-        testTreeMap();
+        testSerialize();
+//        testTreeMap();
     }
 
     private static List<Deal> testScrapeHumbleStore() {
@@ -29,7 +29,6 @@ class TestScrapers {
         List<Deal> allDeals = new ArrayList<>();
         allDeals.addAll(redditDeals);
         allDeals.addAll(humbleDeals);
-
 
         return allDeals;
     }

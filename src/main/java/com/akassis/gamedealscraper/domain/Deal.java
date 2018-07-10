@@ -16,8 +16,7 @@ public abstract class Deal {
     // All deals should be able to implement these fields as a minimum
     String       title;
     URL          url;
-    String       store;
-    List<String> vendors; // TODO: This should replace `store` once implemented
+    List<String> vendors;
     String       sourceName;
     URL          sourceUrl;
     // These fields may not be available from all sources and should therefore be considered optional
@@ -48,8 +47,8 @@ public abstract class Deal {
     public String toString() {
         StringBuilder s = new StringBuilder();
 
-        if (!Strings.isEmpty(store)) {
-            s.append("[").append(store).append("] ");
+        if (vendors != null) {
+            s.append("[").append(String.join("/", vendors)).append("] ");
         }
         s.append(title).append("\n");
         s.append(url.toString()).append("\n");
@@ -93,9 +92,6 @@ public abstract class Deal {
     }
     public URL getUrl() {
         return url;
-    }
-    public String getStore() {
-        return store;
     }
     public List<String> getVendors() {
         return vendors;
