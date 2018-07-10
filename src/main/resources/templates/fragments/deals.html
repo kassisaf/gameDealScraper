@@ -21,7 +21,7 @@
                             <span th:each="vendor : ${deal.vendors}">
                                 <i  th:attr="class=${iconMap.get(vendor)}"></i>
                             </span>
-                            -
+                            <span th:if="${not (#lists.isEmpty(deal.vendors) or #lists.isEmpty(deal.platforms))}">-</span>
                             <span th:each="platform : ${deal.platforms}">
                                 <i  th:attr="class=${iconMap.get(platform)}"></i>
                             </span>
