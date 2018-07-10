@@ -2,11 +2,11 @@
 
     <!-- Begin Deal items -->
     <!--<div th:each="deal : ${deals}">-->
-    <div th:each="deal : ${deals}" class="column is-12-mobile is-6-tablet is-4-fullhd">
-        <div class="notification">
+    <div th:each="deal : ${deals}" class="column is-12-mobile is-6-tablet is-4-fullhd" style="padding: 8px">
+        <div class="notification" style="padding: 0.5rem 0.8rem;">
             <article class="media">
                 <div class="media-left">
-                    <figure class="card image is-128x128">
+                    <figure class="card image" style="width: 160px; height: auto; max-height: 160px">
                         <a th:attr="href=${deal.url}" href="#" target="_blank" style="text-decoration: none;">
                             <img th:attr="src=${deal.imageUrl}, alt=${deal.vendors.get(0)}" class="preview-image has-text-centered condensed">
                         </a>
