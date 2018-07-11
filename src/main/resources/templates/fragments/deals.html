@@ -3,6 +3,7 @@
     <!-- Begin Deal items -->
     <div th:each="deal : ${deals}" class="column is-12-mobile is-6-tablet is-4-fullhd" style="padding: 8px">
         <div class="notification" style="padding: 0.5rem 0.8rem;">
+
             <article class="media">
                 <div class="media-left">
                     <figure class="card image" style="width: 160px; height: auto; max-height: 160px">
@@ -18,11 +19,11 @@
                         </a>
                         <div id="icons" class="has-icon has-text-grey">
                             <span th:each="vendor : ${deal.vendors}">
-                                <i th:attr="class=${iconMap.get(vendor)}, alt=${vendor}"></i>
+                                <i th:attr="class=${iconMap.get(vendor)}, title=${vendor}"></i>
                             </span>
                             <span th:if="${not (#lists.isEmpty(deal.vendors) or #lists.isEmpty(deal.platforms))}">-</span>
                             <span th:each="platform : ${deal.platforms}">
-                                <i th:attr="class=${iconMap.get(platform)}, alt=${platform}"></i>
+                                <i th:attr="class=${iconMap.get(platform)}, title=${platform}"></i>
                             </span>
                         </div>
                         <div class="has-text-grey">
@@ -41,6 +42,7 @@
                     </a>
                 </div>
             </article>
+
         </div>
     </div>
     <!-- End of Deal items -->
