@@ -2,23 +2,26 @@
 @import "../lib/css/bulma.min.css";
 
 /* Page theming */
+:root {
+    --dark-bg:       #2a2a2e;
+    --dark-bg-inner: #38383d;
+    --dark-text:     #cfcfd1;
+}
+
 html {
-    background-color: #2a2a2e;
+    background-color: var(--dark-bg);
 }
 body {
-    color: #cfcfd1;
+    color: var(--dark-text);
 }
 div .notification {
-    background-color: #38383d;
+    background-color: var(--dark-bg-inner);
 }
 div .condensed{
-    color: #cfcfd1;
-}
-#icons {
-    /*     color: #a0a0a3 !important; */
+    color: var(--dark-text);
 }
 a img {
-    background: #2a2a2e;
+    background: var(--dark-bg);
 }
 .fa-lightbulb {
     color: #ffcc66;
@@ -51,16 +54,7 @@ a img {
     height: 100% !important;
     object-fit: contain;
 }
-
-/* Glyph icons */
-/*
-.fa-reddit-alien {
-    color: #ff4500;
+.fa-sync {
+    text-decoration: none;
+    color: var(--dark-text);
 }
-.fa-steam {
-    color: #1b2838;
-}
-.fa-twitch {
-    color: #392e5c;
-}
-*/

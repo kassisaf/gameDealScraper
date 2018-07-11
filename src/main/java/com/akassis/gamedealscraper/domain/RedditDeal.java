@@ -1,6 +1,7 @@
 package com.akassis.gamedealscraper.domain;
 
 import com.akassis.gamedealscraper.utils.Convert;
+import com.akassis.gamedealscraper.utils.Logger;
 import net.dean.jraw.models.Submission;
 
 import java.math.BigDecimal;
@@ -23,6 +24,10 @@ public class RedditDeal extends Deal {
 
         String thumbnail = submission.getThumbnail();
         if (!thumbnail.matches(".*((self)|(default)|(spoiler)).*")) {
+//            Logger.println("debug", "Converting thumbnail for post: " + sourceUrl);
+            if (thumbnail.equals("nsfw")) {
+                Logger.println("warning","Submission marked nsfw, thumbnail conversion will fail: " + sourceUrl);
+            }
             imageUrl = Convert.stringToURL(thumbnail);
         }
         if (isFree()) {
