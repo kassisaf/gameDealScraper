@@ -10,7 +10,6 @@ class TestScrapers {
 //        testScrapeReddit();
 //        testDeserializeToDeal();
 //        testSerialize();
-        Logger.println("version", Logger.getProjectVersion());
     }
 
     private static List<Deal> testScrapeHumbleStore() {
