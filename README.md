@@ -3,6 +3,8 @@ gameDealScraper
 
 A full-stack web application designed to find and share free games.
 
+![0.1.00-ALPHA Screenshot at small tablet resolution](docs/screenshots/preview-0.1.00-alpha-tablet.png?raw=true "0.1.00-ALPHA Screenshot at small tablet resolution")
+
 ## Installation:
 - Download or clone the project
 - Create `src/main/credentials.properties` and fill in your reddit API credentials (see `credentials.properties.example` for more info)
