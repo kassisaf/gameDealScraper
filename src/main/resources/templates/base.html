@@ -11,7 +11,7 @@
 <section class="section">
     <div class="container">
         <div th:replace="fragments/header.html :: header">Could not resolve header fragment</div>
-        <div th:replace="fragments/deals.html :: deals">Could not resolve content fragment</div>
+        <div th:if="${deals} != null and ${deals.size()} > 0" th:replace="fragments/deals.html :: deals">Could not resolve content fragment</div>
     </div>
 </section>
 

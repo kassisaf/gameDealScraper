@@ -28,6 +28,7 @@ public class DealsController {
 
         model.addAttribute("deals", deals);
         model.addAttribute("iconMap", Deal.getIconMap());
+
         return "base";
     }
 }

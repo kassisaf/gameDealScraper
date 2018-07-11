@@ -30,7 +30,7 @@
                             <a th:attr="href=${deal.sourceUrl}" href="#" target="_blank" style="text-decoration: none;">
                                 <em th:text="${deal.sourceName}" class="tiny condensed">Source</em>
                                 <em class="tiny condensed" th:if="${deal.expiry} != null">
-                                    (expires <span th:text="${deal.expiry}"></span>)
+                                    (ends <span th:text="${deal.expiry}"></span>)
                                 </em>
                             </a>
                         </div>
