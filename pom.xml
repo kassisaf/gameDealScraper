@@ -6,9 +6,10 @@
 
     <groupId>com.akassis</groupId>
     <artifactId>gamedealscraper</artifactId>
-    <version>0.1.0 ALPHA</version>
+    <version>0.1.00 ALPHA</version>
     <url>https://github.com/ababyduck/gameDealScraper</url>
-    <name>gameDealScraper ${version}</name>
+    <name>gameDealScraper ${project.version}</name>
+    <packaging>jar</packaging>
 
     <description>A web app designed to find and share free games.</description>
 
@@ -96,11 +97,26 @@
 
     <build>
         <plugins>
+
             <!-- Package as an executable jar/war -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>spring-boot</classifier>
+                            <mainClass>
+                                com.akassis.gamedealscraper.webapp.WebAppInitializer
+                            </mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
+
         </plugins>
     </build>
 
