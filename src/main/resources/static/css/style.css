@@ -1,7 +1,28 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300|Press+Start+2P|Permanent+Marker");
 @import "../lib/css/bulma.min.css";
 
-/* General */
+/* Page theming */
+body {
+    background-color: #2a2a2e;
+    color: #cfcfd1;
+}
+div .notification {
+    background-color: #38383d;
+}
+div .condensed{
+    color: #cfcfd1;
+}
+#icons {
+    /*     color: #a0a0a3 !important; */
+}
+a img {
+    background: #2a2a2e;
+}
+.fa-lightbulb {
+    color: #ffcc66;
+}
+
+/* General-use classes */
 .tiny {
     font-size: 0.8rem;
 }
@@ -21,6 +42,7 @@
 .appTitle2 {
     font-family: 'Permanent Marker', cursive;
     font-size: 1.5rem;
+    color: #f2777a;
     transform: translateY(-0.1rem);
 }
 .preview-image {
