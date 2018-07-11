@@ -1,5 +1,6 @@
 import com.akassis.gamedealscraper.domain.Deal;
 import com.akassis.gamedealscraper.scraper.Scraper;
+import com.akassis.gamedealscraper.utils.Logger;
 
 import java.util.*;
 
@@ -8,8 +9,8 @@ class TestScrapers {
 //        testScrapeHumbleStore();
 //        testScrapeReddit();
 //        testDeserializeToDeal();
-        testSerialize();
-//        testTreeMap();
+//        testSerialize();
+        Logger.println("version", Logger.getProjectVersion());
     }
 
     private static List<Deal> testScrapeHumbleStore() {
@@ -41,20 +42,4 @@ class TestScrapers {
         }
     }
 
-    private static void testTreeMap() {
-        Map<String, String> map = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
-
-        List<String> outOfOrder = new ArrayList<>();
-        outOfOrder.add("mac");
-        outOfOrder.add("linux");
-        outOfOrder.add("linux");
-        outOfOrder.add("mac");
-        outOfOrder.add("windows");
-        outOfOrder.sort(Comparator.reverseOrder());
-
-        for (String vendor : outOfOrder) {
-            System.out.println(Deal.getIconMap().get(vendor));
-        }
-
-    }
 }

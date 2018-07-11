@@ -3,6 +3,7 @@ package com.akassis.gamedealscraper.webapp;
 import com.akassis.gamedealscraper.domain.Deal;
 import com.akassis.gamedealscraper.scraper.Scraper;
 import com.akassis.gamedealscraper.utils.Convert;
+import com.akassis.gamedealscraper.utils.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,6 +44,7 @@ public class DealsController {
 
         model.addAttribute("deals", deals);
         model.addAttribute("iconMap", Deal.getIconMap());
+        model.addAttribute("version", Logger.getProjectVersion());
 
         return "base";
     }
