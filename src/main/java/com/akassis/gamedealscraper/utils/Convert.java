@@ -44,4 +44,9 @@ public abstract class Convert {
         return list;
     }
 
+    public static boolean stringToBoolean(String string) {
+        string = string.toLowerCase();
+        return string.equals("1") || string.equals("true") || string.equals("t") || string.equals("yes") || string.equals("y");
+    }
+
 }
