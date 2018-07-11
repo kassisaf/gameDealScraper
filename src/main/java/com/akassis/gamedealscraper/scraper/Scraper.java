@@ -12,16 +12,16 @@ public abstract class Scraper {
         return scrapeSubreddit(targetSub, 100);
     }
     public static List<Deal> scrapeSubreddit(String targetSub, int numOfPosts) {
-        System.out.println(Logger.getTimeStamp() + "  Scraping /r/" + targetSub + "...");
+        Logger.println("Scraping /r/" + targetSub + "...");
         List<Deal> deals = RedditScraper.scrapeSubreddit(targetSub, numOfPosts);
-        System.out.println(Logger.getTimeStamp() + "  Returning " + deals.size() + " results.");
+        Logger.println("Returning " + deals.size() + " results.");
         return deals;
     }
 
     public static List<Deal> scrapeHumbleStore() {
-        System.out.println(Logger.getTimeStamp() + "  Scraping Humble Store...");
+        Logger.println("Scraping Humble Store...");
         List<Deal> deals = WebScraper.scrapeHumbleStore();
-        System.out.println(Logger.getTimeStamp() + "  Returning " + deals.size() + " results.");
+        Logger.println("Returning " + deals.size() + " results.");
         return WebScraper.scrapeHumbleStore();
     }
 

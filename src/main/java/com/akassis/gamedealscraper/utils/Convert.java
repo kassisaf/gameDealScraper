@@ -18,10 +18,10 @@ public abstract class Convert {
         try {
             return new URL(url);
         } catch (MalformedURLException e) {
-            System.out.println(Logger.getTimeStamp() + "Could not convert to URL: " + url);
-            e.printStackTrace();
+            Logger.println("FAILED to convert string to URL: " + url);
+//            e.printStackTrace();
+            return null;
         }
-        return null;
     }
 
     public static LocalDate dateToLocalDate (Date date){
