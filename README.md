@@ -3,12 +3,20 @@ gameDealScraper
 
 A full-stack web application designed to find and share free games.
 
+## Installation:
+- Download or clone the project
+- Create `src/main/credentials.properties` and fill in your reddit API credentials (see `credentials.properties.example` for more info)
+- Configure which port you want the app to run on in `src/main/application.properties` (default is 80)
+- Run `mvn package` in the root folder to build the project (Requires [Apache Maven](https://maven.apache.org/download.cgi))
+- Run `java -jar 'target\gamedealscraper-[version].jar'` (Requires [Java](https://java.com/en/download/))
+- Access the app in a web browser at `http://localhost:80` (or whichever port you set it to run on)
+
 ## Planned features:
 
 #### Initial release:
 - [x] Finds "free to own" games from [/r/GameDeals](https://www.reddit.com/r/GameDeals/) and the [Humble Store](https://www.humblebundle.com/store)
 - [X] Displays results in an attractive, responsive webpage
-- [ ] Easily deployable to a free VPS as a single .jar file
+- [X] Easily deployable to a free VPS as a single .jar file
 
 #### Future:
 - [ ] Database for tracking deals as they are discovered or expire
