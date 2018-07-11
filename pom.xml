@@ -7,11 +7,10 @@
     <groupId>com.akassis</groupId>
     <artifactId>gamedealscraper</artifactId>
     <version>0.1.00 ALPHA</version>
-    <url>https://github.com/ababyduck/gameDealScraper</url>
     <name>gameDealScraper ${project.version}</name>
-    <packaging>jar</packaging>
-
     <description>A web app designed to find and share free games.</description>
+    <url>https://github.com/ababyduck/gameDealScraper</url>
+    <packaging>jar</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -29,14 +28,6 @@
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.0.3.RELEASE</version>
     </parent>
-
-    <repositories>
-        <repository>
-            <id>jcenter</id>
-            <name>jcenter (needed for JRAW)</name>
-            <url>https://jcenter.bintray.com</url>
-        </repository>
-    </repositories>
 
     <dependencies>
         <!-- Spring for handling web stuff, Thymeleaf for templates -->
@@ -80,14 +71,6 @@
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
         </dependency>
-        <!-- H2 for database handling -->
-        <!--
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -102,22 +85,17 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                        <configuration>
-                            <classifier>spring-boot</classifier>
-                            <mainClass>
-                                com.akassis.gamedealscraper.webapp.WebAppInitializer
-                            </mainClass>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
 
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>jcenter</id>
+            <name>jcenter (needed for JRAW)</name>
+            <url>https://jcenter.bintray.com</url>
+        </repository>
+    </repositories>
 
 </project>
