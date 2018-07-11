@@ -3,7 +3,6 @@ package com.akassis.gamedealscraper.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.logging.log4j.util.Strings;
 
 import java.math.BigDecimal;
 import java.net.URL;
