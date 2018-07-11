@@ -2,8 +2,10 @@
 @import "../lib/css/bulma.min.css";
 
 /* Page theming */
-body {
+html {
     background-color: #2a2a2e;
+}
+body {
     color: #cfcfd1;
 }
 div .notification {
