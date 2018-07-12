@@ -28,5 +28,8 @@ public abstract class Logger {
     public static String getAppId() {
         return getGroupId() + "." + getArtifactId();
     }
+    public static String getName() {
+        return props.getString("info.build.name");
+    }
 
 }

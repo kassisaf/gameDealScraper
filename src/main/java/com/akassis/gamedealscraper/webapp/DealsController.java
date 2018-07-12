@@ -45,6 +45,7 @@ public class DealsController {
         model.addAttribute("deals", deals);
         model.addAttribute("iconMap", Deal.getIconMap());
         model.addAttribute("version", Logger.getVersion());
+        model.addAttribute("pageTitle", Logger.getName());
 
         return "base";
     }
