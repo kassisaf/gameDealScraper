@@ -9,10 +9,10 @@ A full-stack web application designed to find and share free games. Currently su
 Note: You will need a free Reddit API account to run your own instance.
 - [Download the latest release](https://github.com/ababyduck/gameDealScraper/releases/latest) or clone the project
 - Create `src/main/credentials.properties` and fill in your reddit API credentials (see `credentials.properties.example` for more info)
-- Configure which port you want the app to run on in `src/main/application.properties` (default is 80)
-- Run `mvn package` in the root folder to build the project (Requires [Apache Maven](https://maven.apache.org/download.cgi))
+- (Optional) Configure which port you want the app to run on by uncommenting the `server.port` line in `src/main/application.properties` (default is 8080)
+- Run `mvn package` in the root project folder to build a standalone, executable jar file (Requires [Apache Maven](https://maven.apache.org/download.cgi))
 - Run `java -jar 'target\gamedealscraper-[version].jar'` (Requires [Java](https://java.com/en/download/))
-- Access the app in a web browser at `http://localhost:80` (or whichever port you set it to run on)
+- Access the app in a web browser at `http://localhost:8080`
 
 ## Planned features:
 
