@@ -6,7 +6,8 @@ A full-stack web application designed to find and share free games.
 ![0.1.00-ALPHA Screenshot at small tablet resolution](docs/screenshots/preview-0.1.00-alpha-tablet.png?raw=true "0.1.00-ALPHA Screenshot at small tablet resolution")
 
 ## Installation:
-- Download or clone the project
+Note: You will need a free Reddit API account to run your own instance.
+- [Download the latest release](https://github.com/ababyduck/gameDealScraper/releases/latest) or clone the project
 - Create `src/main/credentials.properties` and fill in your reddit API credentials (see `credentials.properties.example` for more info)
 - Configure which port you want the app to run on in `src/main/application.properties` (default is 80)
 - Run `mvn package` in the root folder to build the project (Requires [Apache Maven](https://maven.apache.org/download.cgi))
