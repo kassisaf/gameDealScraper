@@ -1,7 +1,7 @@
 gameDealScraper
 ===========
 
-A full-stack web application designed to find and share free games.
+A full-stack web application designed to find and share free games. Currently supports the Humble Store and Reddit's /r/GameDeals, with more to come. Probably.
 
 ![0.1.00-ALPHA Screenshot at small tablet resolution](docs/screenshots/preview-0.1.00-alpha-tablet.png?raw=true "0.1.00-ALPHA Screenshot at small tablet resolution")
 
