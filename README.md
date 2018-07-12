@@ -21,6 +21,11 @@ Note: You will need a free Reddit API account to run your own instance.
 - [X] Displays results in an attractive, responsive webpage
 - [X] Easily deployable to a free VPS as a single .jar file
 
+#### Soon™:
+- [ ] Caching to reduce api calls and server load
+- [ ] Proper Unit Testing
+- [ ] Full Javadoc
+
 #### Future:
 - [ ] Database for tracking deals as they are discovered or expire
 - [ ] Admin login for manually editing or removing expired/problematic items (e.g. bad title parse)
