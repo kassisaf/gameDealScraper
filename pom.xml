@@ -6,8 +6,8 @@
 
     <groupId>com.akassis</groupId>
     <artifactId>gamedealscraper</artifactId>
-    <version>0.1.01-ALPHA</version>
-    <name>gameDealScraper v${project.version}</name>
+    <version>0.1.02-ALPHA</version>
+    <name>gameDealScraper</name>
     <description>A web app designed to find and share free games.</description>
     <url>https://github.com/ababyduck/gameDealScraper</url>
     <packaging>jar</packaging>
