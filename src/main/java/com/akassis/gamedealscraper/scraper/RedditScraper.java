@@ -2,6 +2,7 @@ package com.akassis.gamedealscraper.scraper;
 
 import com.akassis.gamedealscraper.domain.Deal;
 import com.akassis.gamedealscraper.domain.RedditDeal;
+import com.akassis.gamedealscraper.utils.Logger;
 import net.dean.jraw.RedditClient;
 import net.dean.jraw.http.NetworkAdapter;
 import net.dean.jraw.http.OkHttpNetworkAdapter;
@@ -19,14 +20,18 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 abstract class RedditScraper {
+    private static ResourceBundle credentialsBundle = ResourceBundle.getBundle("credentials");
+    private static String username = credentialsBundle.getString("reddit_username");
+    private static String password = credentialsBundle.getString("reddit_password");
+    private static String clientId = credentialsBundle.getString("reddit_client_id");
+    private static String clientSecret = credentialsBundle.getString("reddit_client_secret");
 
     private static UserAgent userAgent = new UserAgent(
-            "gamedealscraper",
-            "com.akassis.gamedealscraper",
-            "v0.0.1-PRE",
-            "TheFlyingDharma"
+            "web",
+            Logger.getAppId(),
+            Logger.getVersion(),
+            username
     );
-    private static ResourceBundle credentialsBundle = ResourceBundle.getBundle("credentials");
 
     static List<Deal> scrapeSubreddit(String targetSub, int numOfPosts){
         if (numOfPosts > 100) {
@@ -36,13 +41,11 @@ abstract class RedditScraper {
             numOfPosts = 1;
         }
 
+        Logger.println("Getting top " + numOfPosts + " submissions from /r/" + targetSub);
+        Logger.println("Sending " + userAgent.toString());
+
         // Set up our reddit connection and auth
-        Credentials credentialsReddit = Credentials.script(
-                credentialsBundle.getString("reddit_username"),
-                credentialsBundle.getString("reddit_password"),
-                credentialsBundle.getString("reddit_client_id"),
-                credentialsBundle.getString("reddit_client_secret")
-        );
+        Credentials credentialsReddit = Credentials.script(username, password, clientId, clientSecret);
         NetworkAdapter adapter = new OkHttpNetworkAdapter(userAgent);
         RedditClient reddit = OAuthHelper.automatic(adapter, credentialsReddit);
 

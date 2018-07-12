@@ -3,8 +3,7 @@ package com.akassis.gamedealscraper.webapp;
 import com.akassis.gamedealscraper.domain.Deal;
 import com.akassis.gamedealscraper.scraper.Scraper;
 import com.akassis.gamedealscraper.utils.Convert;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
+import com.akassis.gamedealscraper.utils.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,8 +15,6 @@ import java.util.List;
 
 @Controller
 public class DealsController {
-    @Autowired
-    private Environment env;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String deals(Model model,
@@ -47,7 +44,7 @@ public class DealsController {
 
         model.addAttribute("deals", deals);
         model.addAttribute("iconMap", Deal.getIconMap());
-        model.addAttribute("version", env.getProperty("info.build.version"));
+        model.addAttribute("version", Logger.getVersion());
 
         return "base";
     }

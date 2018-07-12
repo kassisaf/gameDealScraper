@@ -12,7 +12,7 @@ public abstract class Scraper {
         return scrapeSubreddit(targetSub, 100);
     }
     public static List<Deal> scrapeSubreddit(String targetSub, int numOfPosts) {
-        Logger.println("Scraping /r/" + targetSub + "...");
+        Logger.println("Scraping Reddit...");
         List<Deal> deals = RedditScraper.scrapeSubreddit(targetSub, numOfPosts);
         Logger.println("Returning " + deals.size() + " results.");
         return deals;
