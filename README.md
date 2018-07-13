@@ -22,7 +22,9 @@ Note: You will need a free Reddit API account to run your own instance.
 - [X] Easily deployable to a free VPS as a single .jar file
 
 #### Soon™:
-- [ ] Caching to reduce api calls and server load
+- [ ] Logging to diagnose server failures
+- [ ] Caching to reduce API calls and server load
+- [ ] Installer script for easy VPS deployment
 - [ ] Proper Unit Testing
 - [ ] Full Javadoc
 
