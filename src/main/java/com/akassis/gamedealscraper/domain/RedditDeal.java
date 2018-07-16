@@ -69,6 +69,7 @@ public class RedditDeal extends Deal {
             title = splitTitle.get(1).trim();
         }
         else {
+            vendors = Convert.stringToList("");
             title = rawTitle;
         }
 
