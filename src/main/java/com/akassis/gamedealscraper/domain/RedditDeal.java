@@ -31,7 +31,7 @@ public class RedditDeal extends Deal {
             imageUrl = Convert.stringToURL(thumbnail);
         }
         if (isFree()) {
-            currentPrice = BigDecimal.valueOf(0);
+            currentPrice = BigDecimal.valueOf(0.0);
         }
     }
 

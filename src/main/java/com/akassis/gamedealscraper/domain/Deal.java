@@ -40,6 +40,8 @@ public abstract class Deal {
         iconMap.put("xbox",        "fab fa-xbox");
         iconMap.put("playstation", "fab fa-playstation");
         iconMap.put("switch",      "fab fa-nintendo-switch");
+        // Other
+        iconMap.put("other-key",   "fas fa-question");
     }
 
     @Override
@@ -69,7 +71,7 @@ public abstract class Deal {
 
     @JsonIgnore
     public Boolean isFree() {
-        return currentPrice.equals(BigDecimal.valueOf(0));
+        return currentPrice.equals(BigDecimal.valueOf(0.0));
     }
 
     @JsonIgnore
