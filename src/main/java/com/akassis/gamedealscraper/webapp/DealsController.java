@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Controller
@@ -33,8 +34,19 @@ public class DealsController {
             deals.addAll(humbleDeals);
         }
 
+        // Always scrape reddit last to avoid showing duplicate results
         if (scrapeReddit) {
             List<Deal> redditDeals = Scraper.scrapeSubreddit("GameDeals");
+            // If we find a reddit post for a deal we've already discovered, discard it
+            for (Iterator<Deal> it = redditDeals.iterator(); it.hasNext();) {
+                Deal redditDeal = it.next();
+                for (Deal deal : deals) {
+                    if (deal.getTitle().equals(redditDeal.getTitle())) { // TODO: Replace the title check here with some kind of unique ID once database is implemented
+                        it.remove();
+                    }
+                }
+            }
+
             deals.addAll(redditDeals);
         }
 
