@@ -39,7 +39,13 @@ public class HumbleDealDeserializer extends StdDeserializer<HumbleDeal> {
 
         hd.sourceName = sourceName;
         hd.sourceUrl = Convert.stringToURL(sourceUrl);
-        hd.imageUrl = Convert.stringToURL(node.get("featured_image_small").asText());
+
+        try {
+            String image = node.get("featured_image_small").asText();
+            hd.imageUrl = Convert.stringToURL(image);
+        } catch (NullPointerException e) {
+            hd.imageUrl = null;
+        }
 
         // Sort the list of platforms in reverse alphabetical order so that Windows > Mac > Linux
         List<String> platforms = Convert.jsonElementToStringList(node, "platforms");
